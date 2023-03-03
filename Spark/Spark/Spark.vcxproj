@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\AssetManager.cpp" />
     <ClCompile Include="src\Core\Core.cpp" />
     <ClCompile Include="src\Core\JobSystem.cpp" />
     <ClCompile Include="src\Core\Jobs\InitalizeJob.cpp" />
@@ -26,12 +27,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\ApplicationSpecification.h" />
+    <ClInclude Include="src\Core\AssetManager.h" />
     <ClInclude Include="src\Core\Event.h" />
     <ClInclude Include="src\Core\JobSystem.h" />
     <ClInclude Include="src\Core\Jobs\InitalizeJob.h" />
+    <ClInclude Include="src\Core\JSON.h" />
+    <ClInclude Include="src\Core\Obj.h" />
     <ClInclude Include="src\Core\Object.h" />
     <ClInclude Include="src\Core\Spark.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Thirdparty\LZ4\lz4.h" />
+    <ClInclude Include="src\Thirdparty\LZ4\lz4frame.h" />
+    <ClInclude Include="src\Thirdparty\LZ4\lz4hc.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -85,6 +92,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>C:\Users\xpiot\Music\sparktest\Libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -120,10 +130,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\xpiot\Music\sparktest\Spark\Spark\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>liblz4_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

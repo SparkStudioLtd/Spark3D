@@ -1,3 +1,10 @@
-﻿  JobSystem.cpp
+﻿  AssetManager.cpp
+C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.cpp(36,34): warning C4267: "inicjowanie": konwersja z "size_t" do "uint32_t", możliwa utrata danych
+C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.cpp(40,38): warning C4267: "inicjowanie": konwersja z "size_t" do "uint32_t", możliwa utrata danych
+  Core.cpp
+  JobSystem.cpp
 C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\JobSystem.cpp(15,19): warning C4244: "inicjowanie": konwersja z "__int64" do "int", możliwa utrata danych
+  InitalizeJob.cpp
+  EntryPoint.h
+  Generowanie kodu...
   Spark.vcxproj -> C:\Users\xpiot\Music\sparktest\Spark\x64\Debug\Spark.exe
