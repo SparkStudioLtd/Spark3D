@@ -1,0 +1,3 @@
+﻿  JobSystem.cpp
+C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\JobSystem.cpp(15,19): warning C4244: "inicjowanie": konwersja z "__int64" do "int", możliwa utrata danych
+  Spark.vcxproj -> C:\Users\xpiot\Music\sparktest\Spark\x64\Debug\Spark.exe
