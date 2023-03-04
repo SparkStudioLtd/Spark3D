@@ -1,6 +1,7 @@
-﻿  Editor.cpp
+﻿  GPUContext.cpp
 D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,55): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,40): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Spark\Spark\src\Core\Graphics\OpenGL\GPUContext.cpp(158,88): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
   Spark.vcxproj -> D:\spark-dev\Spark3D\Spark\x64\Debug\Spark.exe

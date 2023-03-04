@@ -255,6 +255,17 @@ GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
         break;
     }
 
+    if (type == COLORMAP) {
+        unsigned int rbo;
+        glGenRenderbuffers(1, &rbo);
+        glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+        framebuffer->unbaseVars["renderBufferObject"] = (int)rbo;
+    }
+
+
     GPUFramebuffer::unbind();
 
     framebuffer->unbaseVars["framebufferID"] = (int)mapFBO;

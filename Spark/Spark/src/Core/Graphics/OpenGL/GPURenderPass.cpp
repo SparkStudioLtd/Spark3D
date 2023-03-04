@@ -38,8 +38,8 @@ void GPURenderPass::end(GPUContext* context) {
     GLFWwindow* window = context->window->unbaseVars["windowHandle"].get<GLFWwindow*>();
 
     glViewport(0, 0, context->window->width, context->window->height);
-    //if (context->useGui)
-        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    if (context->useGui)
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     glViewport(context->viewport->position.x, context->viewport->position.y, context->viewport->scale.x, context->viewport->scale.y);
 

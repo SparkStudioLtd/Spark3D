@@ -39,6 +39,14 @@
     <ClCompile Include="src\Editor\Editor.cpp" />
     <ClCompile Include="src\Entry\EntryPoint.h" />
     <ClCompile Include="src\Thirdparty\glad\glad.c" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_stdlib.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\Thirdparty\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Actor.h" />
@@ -141,6 +149,16 @@
     <ClInclude Include="src\Thirdparty\assimp\ZipArchiveIOSystem.h" />
     <ClInclude Include="src\Thirdparty\glad\glad.h" />
     <ClInclude Include="src\Thirdparty\glad\khrplatform.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imconfig.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui_internal.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imgui_stdlib.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\Thirdparty\imgui\imstb_truetype.h" />
     <ClInclude Include="src\Thirdparty\LZ4\lz4.h" />
     <ClInclude Include="src\Thirdparty\LZ4\lz4frame.h" />
     <ClInclude Include="src\Thirdparty\LZ4\lz4hc.h" />

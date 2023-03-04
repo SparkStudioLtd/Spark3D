@@ -24,6 +24,8 @@ public:
 class Hook {
 public:
 	static void appReady();
+	static void imguiInit();
+	static void imguiRender();
 };
 
 class Spark {

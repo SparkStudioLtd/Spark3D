@@ -36,7 +36,7 @@ void InitalizeJob::execute(Event* event) {
 	fragmentShaderExt = "fragbin";
 #endif
 	//main render pass
-	Spark::graphicsContext->createRenderPass(true, nullptr, false);
+	Spark::graphicsContext->createRenderPass(true, nullptr, true);
 
 	Spark::shaderManager->shaders["GBuffer"] = Spark::graphicsContext->createShader("./res/" + graphicsApi + "/GBuffer." + vertexShaderExt, "./res/" + graphicsApi + "/GBuffer." + fragmentShaderExt);
 	Spark::shaderManager->shaders["ShadowPass"] = Spark::graphicsContext->createShader("./res/" + graphicsApi + "/ShadowPass." + vertexShaderExt, "./res/" + graphicsApi + "/ShadowPass." + fragmentShaderExt);
@@ -44,7 +44,7 @@ void InitalizeJob::execute(Event* event) {
 
 	Spark::graphicsContext->shadowFramebuffer = Spark::graphicsContext->createFramebuffer(DEPTHMAP);
 	Spark::graphicsContext->mainFramebuffer = Spark::graphicsContext->createFramebuffer(COLORMAP);
-	//this->graphicsContext->createRenderPass(false, this->graphicsContext->mainFramebuffer,false);
+	Spark::graphicsContext->createRenderPass(false, Spark::graphicsContext->mainFramebuffer,false);
 
 
 	Spark::graphicsContext->createAtmosphere();

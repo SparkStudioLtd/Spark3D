@@ -21,3 +21,7 @@
 #include "Thirdparty/assimp/Importer.hpp"
 #include "Thirdparty/assimp/scene.h"
 #include "Thirdparty/assimp/postprocess.h"
+
+#include "Thirdparty/imgui/imgui.h"
+#include "Thirdparty/imgui/imgui_impl_glfw.h"
+#include "Thirdparty/imgui/imgui_impl_opengl3.h"
