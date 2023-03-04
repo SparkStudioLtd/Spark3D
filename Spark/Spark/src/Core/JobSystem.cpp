@@ -58,5 +58,5 @@ void Job::clean()
 
 void Job::log(std::string content)
 {
-    std::cout << "[" + m_DebugName + "] " << content << std::endl;
+    std::cout << "\u001b[31m[Spark]\u001b[0m " << "[" + m_DebugName + "] " << content << std::endl;
 }
