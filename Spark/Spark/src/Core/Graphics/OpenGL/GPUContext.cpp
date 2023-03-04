@@ -221,45 +221,51 @@ GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
     unsigned int mapFBO;
     glGenFramebuffers(1, &mapFBO);
 
-    unsigned int map;
-    glGenTextures(1, &map);
-    glBindTexture(GL_TEXTURE_2D, map);
-    switch (type) {
-    case COLORMAP:
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-        break;
-    case DEPTHMAP:
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
-            width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-        break;
-    }
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 
-    glBindFramebuffer(GL_FRAMEBUFFER, mapFBO);
+        unsigned int map;
+        glGenTextures(1, &map);
+        glBindTexture(GL_TEXTURE_2D, map);
+        switch (type) {
+        case COLORMAP:
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+            break;
+        case DEPTHMAP:
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
+                width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+            break;
+        }
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+        float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 
-    switch (type) {
-    case COLORMAP:
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, map, 0);
-        break;
-    case DEPTHMAP:
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, map, 0);
-        glDrawBuffer(GL_NONE);
-        glReadBuffer(GL_NONE);
-        break;
-    }
+        glBindFramebuffer(GL_FRAMEBUFFER, mapFBO);
+
+        switch (type) {
+        case COLORMAP:
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, map, 0);
+            break;
+        case DEPTHMAP:
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, map, 0);
+            glDrawBuffer(GL_NONE);
+            glReadBuffer(GL_NONE);
+            break;
+        }
+
+        framebuffer->unbaseVars["textureColorBuffer"] = (int)map;
 
     if (type == COLORMAP) {
         unsigned int rbo;
         glGenRenderbuffers(1, &rbo);
         glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
+        //without multisampling:  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
+        glRenderbufferStorageMultisample(GL_RENDERBUFFER, 8,GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
+
+
         glBindRenderbuffer(GL_RENDERBUFFER, 0);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
         framebuffer->unbaseVars["renderBufferObject"] = (int)rbo;
@@ -269,7 +275,6 @@ GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
     GPUFramebuffer::unbind();
 
     framebuffer->unbaseVars["framebufferID"] = (int)mapFBO;
-    framebuffer->unbaseVars["textureColorBuffer"] = (int)map;
 
     framebuffer->type = type;
 
