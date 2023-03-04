@@ -13,11 +13,11 @@ void GPURenderPass::begin(GPUContext* context) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     if (this->useFramebuffer)
         if (this->framebuffer->type == DEPTHMAP)
         {
-            glCullFace(GL_FRONT_AND_BACK);
+            //glCullFace(GL_FRONT_AND_BACK);
         }
 
     //if (!this->useFramebuffer) {

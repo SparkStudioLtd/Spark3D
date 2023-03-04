@@ -1,46 +1,6 @@
-﻿  Renderer.cpp
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,55): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,40): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(130,51): error C2061: błąd składniowy: identyfikator „Transform”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(172,81): error C2061: błąd składniowy: identyfikator „Transform”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(180,11): error C2143: błąd składniowy: brakuje „;” przed „*”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(180,11): error C4430: brak specyfikatora typu - założono, że int. Uwaga: C++ nie obsługuje domyślnie typu int
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(180,22): error C2238: nieoczekiwany(e) token(y) poprzedzający(e) ";"
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Components\Renderer.cpp(15,10): error C2660: "GPUContext::drawQueue": funkcja nie przyjmuje 4 argumentów
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(130,7): message : zobacz deklarację „GPUContext::drawQueue”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Components\Renderer.cpp(15,10): message : podczas próby dopasowania listy argumentów "(GPUMesh *, GPUShader *, Transform *, GPUMaterial *)"
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Components\Renderer.cpp(18,10): error C2660: "GPUContext::drawQueue": funkcja nie przyjmuje 4 argumentów
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Graphics\Graphics.h(130,7): message : zobacz deklarację „GPUContext::drawQueue”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Components\Renderer.cpp(18,10): message : podczas próby dopasowania listy argumentów "(GPUMesh *, GPUShader *, Transform *, GPUMaterial *)"
-  Editor.cpp
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,55): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,40): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Types.h(14,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\ApplicationSpecification.h(3,33): error C2011: "ApplicationSpecification'': "struct" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\ApplicationSpecification.h(3,8): message : zobacz deklarację „ApplicationSpecification”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(3,16): error C2011: "AssetType'': "enum" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(3,6): message : zobacz deklarację „AssetType”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(7,13): error C2011: "Asset'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(7,7): message : zobacz deklarację „Asset”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(18,20): error C2011: "AssetManager'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\AssetManager.h(18,7): message : zobacz deklarację „AssetManager”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(8,20): error C2011: "InitalizeJob'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(8,7): message : zobacz deklarację „InitalizeJob”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(15,17): error C2011: "RenderJob'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(15,7): message : zobacz deklarację „RenderJob”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(24,12): error C2011: "Hook'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(24,7): message : zobacz deklarację „Hook”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(29,13): error C2011: "Spark'': "class" wpisz ponownie definicję
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(29,7): message : zobacz deklarację „Spark”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Editor\Editor.cpp(3,12): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Hook"
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(24,7): message : zobacz deklarację „Hook”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Editor\Editor.cpp(4,25): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Spark"
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(29,7): message : zobacz deklarację „Spark”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Editor\Editor.cpp(4,36): error C3861: "CreateActor": identyfikatora nie odnaleziono
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Editor\Editor.cpp(14,48): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Spark"
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Core\Spark.h(29,7): message : zobacz deklarację „Spark”
-C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Editor\Editor.cpp(14,63): error C2065: "graphicsContext": niezadeklarowany identyfikator
-  Generowanie kodu...
+﻿  Editor.cpp
+D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,55): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,40): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Spark\Spark\src\Core\Types.h(14,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Spark.vcxproj -> D:\spark-dev\Spark3D\Spark\x64\Debug\Spark.exe

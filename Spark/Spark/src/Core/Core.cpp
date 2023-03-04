@@ -6,6 +6,7 @@
 Actor* Spark::CreateActor()
 {
 	Actor* actor = new Actor();
+	actor->transform = new Transform();
 	Spark::actors.push_back(actor);
 	return actor;
 }

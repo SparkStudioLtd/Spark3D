@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="src\Core\Actor.cpp" />
     <ClCompile Include="src\Core\AssetManager.cpp" />
-    <ClCompile Include="src\Core\Components\Renderer.cpp" />
     <ClCompile Include="src\Core\Components\Transform.cpp" />
     <ClCompile Include="src\Core\Core.cpp" />
     <ClCompile Include="src\Core\Graphics\Camera.cpp" />
@@ -45,7 +44,6 @@
     <ClInclude Include="src\Core\Actor.h" />
     <ClInclude Include="src\Core\ApplicationSpecification.h" />
     <ClInclude Include="src\Core\AssetManager.h" />
-    <ClInclude Include="src\Core\Components\Renderer.h" />
     <ClInclude Include="src\Core\Components\Transform.h" />
     <ClInclude Include="src\Core\Event.h" />
     <ClInclude Include="src\Core\Graphics\Graphics.h" />
@@ -249,7 +247,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\xpiot\Music\sparktest\Spark\Spark\src\Thirdparty;C:\Users\xpiot\Music\sparktest\Spark\Spark\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\spark-dev\Spark3D\Spark\Spark\src\Thirdparty;D:\spark-dev\Spark3D\Spark\Spark\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
