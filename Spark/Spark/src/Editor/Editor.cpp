@@ -1,24 +1,7 @@
 #include "Editor.h"
+#include <imgui/imgui_internal.h>
+#include <imgui/imgui_stdlib.h>
 
-class Renderer : public Component {
-public:
-	GPUMesh* mesh;
-	GPUMaterial* material;
-	virtual void BeginPlay(Actor* actor) {
-
-	}
-	virtual void Update(Actor* actor) {
-
-	}
-	virtual void Render(GPUContext* context, Actor* actor) {
-		if (context->renderingToDepthMap) {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, this->material);
-		}
-		else {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("GBuffer"), actor->transform, this->material);
-		}
-	}
-};
 
 class Monkey : public Component {
 public:
@@ -188,15 +171,74 @@ void Hook::imguiInit() {
     ImGui::GetIO().Fonts->AddFontFromMemoryTTF(&asset->m_LoadedAsset.blob[0], sizeof(&asset->m_LoadedAsset.blob[0]), 15);
 }
 
+
+Actor* selectedActor = nullptr;
+
 void renderViewport() {
     ImGui::Begin("Viewport");
     ImGui::Image((void*)std::any_cast<int>(Spark::graphicsContext->renderPasses[1]->framebuffer->unbaseVars["textureColorBuffer"]), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0));
     ImGui::End();
 
     ImGui::Begin("Scene");
+
+    ImGuiTableFlags tableFlags = ImGuiTableFlags_NoPadInnerX
+        | ImGuiTableFlags_Resizable
+        | ImGuiTableFlags_Reorderable
+        | ImGuiTableFlags_ScrollY
+        | ImGuiTableFlags_RowBg; //*| ImGuiTableFlags_Sortable*/;
+
+
+    ImGui::BeginTable("#hierarhy", 3, tableFlags);
+
+    ImGui::TableSetupColumn("Name");
+    ImGui::TableSetupColumn("Type");
+    ImGui::TableSetupColumn("Select");
+
+
+    ImGui::TableSetupScrollFreeze(ImGui::TableGetColumnCount(), 1);
+    ImGui::TableNextRow(ImGuiTableRowFlags_Headers, 22.0f);
+    for (int column = 0; column < ImGui::TableGetColumnCount(); column++)
+    {
+        ImGui::TableSetColumnIndex(column);
+        const char* column_name = ImGui::TableGetColumnName(column);
+        ImGui::TableHeader(column_name);
+    }
+    ImGui::SetCursorPosX(ImGui::GetCurrentTable()->OuterRect.Min.x);
+
+    for (int index = 0; index < Spark::actors.size(); index++) {
+        Actor* actor = Spark::actors[index];
+        ImGui::TableNextColumn();
+        ImGui::Text(actor->name.c_str());
+        ImGui::TableNextColumn();
+        ImGui::Text("");
+        ImGui::TableNextColumn();
+        if (ImGui::Button((std::string("Select##") + std::to_string(index)).c_str())) {
+            selectedActor = actor;
+        }
+    }
+
+
+    ImGui::EndTable();
     ImGui::End();
 
     ImGui::Begin("Actor");
+    if (selectedActor == nullptr) {
+        ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
+        ImGui::SetWindowFontScale(0.945f);
+        ImGui::Text("Select any actor");
+        ImGui::PopStyleColor();
+        ImGui::SetWindowFontScale(1.0f);
+    }
+    else {
+        ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
+        ImGui::SetWindowFontScale(0.945f);
+        ImGui::Text("Name:");
+        ImGui::PopStyleColor();
+        ImGui::SetWindowFontScale(1.0f);
+        ImGui::SameLine();
+        ImGui::InputText("##actorName", &selectedActor->name);
+        ImGui::NewLine();
+    }
     ImGui::End();
 
     ImGui::Begin("Content");
@@ -204,8 +246,19 @@ void renderViewport() {
 
     ImGui::Begin("Toolbox");
     if (ImGui::Button("Cube")) {
-        Actor* actor = Spark::CreateActor();
+        Actor* actor = Spark::CreateActorInQueue();
+
         Renderer* renderer = new Renderer();
+            GPUMaterial* material = new GPUMaterial();
+            material->useLighting = true;
+            material->texture = nullptr;
+            material->albedoColor = glm::vec3(1, 1, 1);
+            renderer->mesh = ModelLoader::loadMesh(Spark::graphicsContext, "./res/geom/cube.obj");
+            renderer->material = material;
+
+            actor->transform->position = glm::vec3(0, 0, -4);
+
+        actor->addComponent(renderer);
 
     }
     ImGui::End();

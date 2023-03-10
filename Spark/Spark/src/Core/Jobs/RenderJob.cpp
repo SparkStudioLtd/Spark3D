@@ -1,5 +1,4 @@
-#include "pch.h"
-#include "Core/Spark.h"
+#include "CoreFramework.h"
 
 void RenderJob::setup() {
 	this->m_DebugName = "Render";

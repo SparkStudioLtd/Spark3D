@@ -1,5 +1,4 @@
-#include "Core/Graphics/Graphics.h"
-#include "Core/Spark.h"
+#include "CoreFramework.h"
 
 void GPUSkybox::update(GPUContext* context)
 {

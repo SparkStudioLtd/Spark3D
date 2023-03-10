@@ -1,4 +1,4 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 
 void GPUBuffer::bind(GPUContext* context)
 {

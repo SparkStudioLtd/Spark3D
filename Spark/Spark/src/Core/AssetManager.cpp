@@ -1,4 +1,4 @@
-#include "AssetManager.h"
+#include "CoreFramework.h"
 
 std::string random_string(std::string::size_type length)
 {

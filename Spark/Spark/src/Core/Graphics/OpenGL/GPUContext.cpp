@@ -1,7 +1,6 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include <Thirdparty/stb_image.h>
-#include <Core/Geometry.h>
 
 void GPUContext::createAdapterAndContext() {
 

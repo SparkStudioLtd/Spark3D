@@ -1,4 +1,4 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 
 void GPUMesh::drawDirect(GPUContext* context, GPUShader* shader, GPUMaterial* material, Transform* transform)
 {

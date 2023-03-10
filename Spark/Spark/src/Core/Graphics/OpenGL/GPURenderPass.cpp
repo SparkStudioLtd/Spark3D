@@ -1,4 +1,4 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 
 void GPURenderPass::begin(GPUContext* context) {
     if (this->useFramebuffer)

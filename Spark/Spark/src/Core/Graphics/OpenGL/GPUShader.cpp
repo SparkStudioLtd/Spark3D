@@ -1,4 +1,4 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 
 void GPUShader::bind() {
     glUseProgram(std::any_cast<int>(this->unbaseVars["programID"]));

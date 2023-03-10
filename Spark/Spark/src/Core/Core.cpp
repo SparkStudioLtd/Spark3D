@@ -1,5 +1,4 @@
-#include "Spark.h"
-
+#include "CoreFramework.h"
 
 
 
@@ -8,6 +7,14 @@ Actor* Spark::CreateActor()
 	Actor* actor = new Actor();
 	actor->transform = new Transform();
 	Spark::actors.push_back(actor);
+	return actor;
+}
+
+Actor* Spark::CreateActorInQueue()
+{
+	Actor* actor = new Actor();
+	actor->transform = new Transform();
+	Spark::actorsQueue.push_back(actor);
 	return actor;
 }
 

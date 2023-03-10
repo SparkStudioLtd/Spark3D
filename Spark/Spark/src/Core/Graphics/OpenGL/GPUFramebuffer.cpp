@@ -1,4 +1,4 @@
-#include "Core/Graphics/Graphics.h"
+#include "CoreFramework.h"
 
 void GPUFramebuffer::bind() {
     glBindFramebuffer(GL_FRAMEBUFFER, std::any_cast<int>(this->unbaseVars["framebufferID"]));

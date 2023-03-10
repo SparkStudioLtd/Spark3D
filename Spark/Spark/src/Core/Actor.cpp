@@ -1,5 +1,4 @@
-#include "pch.h"
-#include "Actor.h"
+#include "CoreFramework.h"
 
 
 void Component::BeginPlay(Actor* actor)

@@ -1,6 +1,4 @@
-#include "pch.h"
-
-#include "Core/Spark.h"
+#include "CoreFramework.h"
 
 bool running = true;
 

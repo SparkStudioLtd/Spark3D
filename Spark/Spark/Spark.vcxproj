@@ -50,20 +50,9 @@
     <ClCompile Include="src\Thirdparty\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Actor.h" />
-    <ClInclude Include="src\Core\ApplicationSpecification.h" />
-    <ClInclude Include="src\Core\AssetManager.h" />
-    <ClInclude Include="src\Core\Components\Transform.h" />
-    <ClInclude Include="src\Core\Event.h" />
-    <ClInclude Include="src\Core\Geometry.h" />
-    <ClInclude Include="src\Core\Graphics\Graphics.h" />
-    <ClInclude Include="src\Core\JobSystem.h" />
+    <ClInclude Include="src\CoreFramework.h" />
     <ClInclude Include="src\Core\JSON.h" />
-    <ClInclude Include="src\Core\ModelLoader.h" />
-    <ClInclude Include="src\Core\Obj.h" />
     <ClInclude Include="src\Core\Object.h" />
-    <ClInclude Include="src\Core\Spark.h" />
-    <ClInclude Include="src\Core\Types.h" />
     <ClInclude Include="src\Editor\Editor.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Thirdparty\assimp\aabb.h" />

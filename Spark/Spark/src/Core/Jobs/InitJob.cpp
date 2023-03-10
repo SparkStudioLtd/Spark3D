@@ -1,6 +1,4 @@
-#include "pch.h"
-#include "Core/Spark.h"
-#include <Core/ModelLoader.h>
+#include "CoreFramework.h"
 
 void InitalizeJob::setup() {
 	this->m_DebugName = "Initalize";
@@ -8,25 +6,6 @@ void InitalizeJob::setup() {
 	this->m_syncType = SYNC;
 }
 
-class Renderer : public Component {
-public:
-	GPUMesh* mesh;
-	GPUMaterial* material;
-	virtual void BeginPlay(Actor* actor) {
-
-	}
-	virtual void Update(Actor* actor) {
-
-	}
-	virtual void Render(GPUContext* context, Actor* actor) {
-		if (context->renderingToDepthMap) {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, this->material);
-		}
-		else {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("GBuffer"), actor->transform, this->material);
-		}
-	}
-};
 
 void InitalizeJob::execute(Event* event) {
 	AssetManager::loadFromFolder();
