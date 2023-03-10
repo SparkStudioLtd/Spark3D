@@ -1,2 +1,7 @@
 .vs
 Spark/Spark/x64
+Binaries/build
+*.vcxproj
+*.sln
+*.user
+*.filters

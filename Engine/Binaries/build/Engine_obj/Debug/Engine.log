@@ -1,0 +1,208 @@
+﻿  Actor.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  AssetManager.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Transform.cpp
+  Core.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Geometry.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Camera.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUBuffer.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUContext.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUFramebuffer.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUMesh.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPURenderPass.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(11,66): warning C4244: "argument": konwersja z "T" do "GLsizei", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(11,42): warning C4244: "argument": konwersja z "T" do "GLsizei", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(44,130): warning C4244: "argument": konwersja z "T" do "GLsizei", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(44,102): warning C4244: "argument": konwersja z "T" do "GLsizei", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(44,74): warning C4244: "argument": konwersja z "T" do "GLint", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+D:\spark-dev\Spark3D\Engine\src\Core\Graphics\OpenGL\GPURenderPass.cpp(44,43): warning C4244: "argument": konwersja z "T" do "GLint", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  GPUShader.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUSkybox.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  GPUWindow.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  JobSystem.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  InitJob.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  RenderJob.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  ModelLoader.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\Core\ModelLoader.cpp(13,29): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\spark-dev\Spark3D\Engine\src\Core\ModelLoader.cpp(16,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\spark-dev\Spark3D\Engine\src\Core\ModelLoader.cpp(40,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Editor.cpp
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,69): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,54): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,39): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\CoreFramework.h(69,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\spark-dev\Spark3D\Engine\src\Editor\Editor.cpp(208,31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  glm.cpp
+  Generowanie kodu...
+  Trwa kompilowanie...
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_stdlib.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Generowanie kodu...
+  glad.c
+GPUContext.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwPollEvents przywołany w funkcji "public: void __thiscall GPUContext::end(void)" (?end@GPUContext@@QAEXXZ)
+RenderJob.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwPollEvents
+GPUContext.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwMakeContextCurrent przywołany w funkcji "public: void __thiscall GPUContext::createAdapterAndContext(void)" (?createAdapterAndContext@GPUContext@@QAEXXZ)
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwMakeContextCurrent
+GPUContext.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSwapBuffers przywołany w funkcji "public: void __thiscall GPUContext::end(void)" (?end@GPUContext@@QAEXXZ)
+RenderJob.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwSwapBuffers
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwSwapBuffers
+GPUContext.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSwapInterval przywołany w funkcji "public: void __thiscall GPUContext::end(void)" (?end@GPUContext@@QAEXXZ)
+RenderJob.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwSwapInterval
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwSwapInterval
+GPUContext.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetProcAddress przywołany w funkcji "public: void __thiscall GPUContext::createAdapterAndContext(void)" (?createAdapterAndContext@GPUContext@@QAEXXZ)
+GPUWindow.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwInit przywołany w funkcji "public: void __thiscall GPUWindow::createWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?createWindow@GPUWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+GPUWindow.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwTerminate przywołany w funkcji "public: void __thiscall GPUWindow::createWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?createWindow@GPUWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+GPUWindow.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwWindowHint przywołany w funkcji "public: void __thiscall GPUWindow::createWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?createWindow@GPUWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwWindowHint
+GPUWindow.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwCreateWindow przywołany w funkcji "public: void __thiscall GPUWindow::createWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?createWindow@GPUWindow@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwCreateWindow
+InitJob.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetFramebufferSize przywołany w funkcji "public: virtual void __thiscall InitalizeJob::execute(class Event *)" (?execute@InitalizeJob@@UAEXPAVEvent@@@Z)
+imgui_impl_glfw.obj : error LNK2001: nierozpoznany symbol zewnętrzny _glfwGetFramebufferSize
+ModelLoader.obj : error LNK2019: nierozpoznany symbol zewnętrzny "public: __thiscall Assimp::Importer::Importer(void)" (??0Importer@Assimp@@QAE@XZ) przywołany w funkcji "public: static class GPUMesh * __cdecl ModelLoader::loadMesh(class GPUContext *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadMesh@ModelLoader@@SAPAVGPUMesh@@PAVGPUContext@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+ModelLoader.obj : error LNK2019: nierozpoznany symbol zewnętrzny "public: __thiscall Assimp::Importer::~Importer(void)" (??1Importer@Assimp@@QAE@XZ) przywołany w funkcji "public: static class GPUMesh * __cdecl ModelLoader::loadMesh(class GPUContext *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadMesh@ModelLoader@@SAPAVGPUMesh@@PAVGPUContext@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+ModelLoader.obj : error LNK2019: nierozpoznany symbol zewnętrzny "public: struct aiScene const * __thiscall Assimp::Importer::ReadFile(char const *,unsigned int)" (?ReadFile@Importer@Assimp@@QAEPBUaiScene@@PBDI@Z) przywołany w funkcji "public: static class GPUMesh * __cdecl ModelLoader::loadMesh(class GPUContext *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadMesh@ModelLoader@@SAPAVGPUMesh@@PAVGPUContext@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetError przywołany w funkcji "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetErrorCallback przywołany w funkcji "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetMonitors przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetMonitorPos przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetMonitorWorkarea przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetMonitorContentScale przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetMonitorCallback przywołany w funkcji "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetVideoMode przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMonitors(void)" (?ImGui_ImplGlfw_UpdateMonitors@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwDestroyWindow przywołany w funkcji "void __cdecl ImGui_ImplGlfw_DestroyWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_DestroyWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowTitle przywołany w funkcji "void __cdecl ImGui_ImplGlfw_SetWindowTitle(struct ImGuiViewport *,char const *)" (?ImGui_ImplGlfw_SetWindowTitle@@YAXPAUImGuiViewport@@PBD@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetWindowPos przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CursorPosCallback(struct GLFWwindow *,double,double)" (?ImGui_ImplGlfw_CursorPosCallback@@YAXPAUGLFWwindow@@NN@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowPos przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetWindowSize przywołany w funkcji "struct ImVec2 __cdecl ImGui_ImplGlfw_GetWindowSize(struct ImGuiViewport *)" (?ImGui_ImplGlfw_GetWindowSize@@YA?AUImVec2@@PAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowSize przywołany w funkcji "void __cdecl ImGui_ImplGlfw_SetWindowSize(struct ImGuiViewport *,struct ImVec2)" (?ImGui_ImplGlfw_SetWindowSize@@YAXPAUImGuiViewport@@UImVec2@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowOpacity przywołany w funkcji "void __cdecl ImGui_ImplGlfw_SetWindowAlpha(struct ImGuiViewport *,float)" (?ImGui_ImplGlfw_SetWindowAlpha@@YAXPAUImGuiViewport@@M@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwShowWindow przywołany w funkcji "void __cdecl ImGui_ImplGlfw_ShowWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_ShowWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwFocusWindow przywołany w funkcji "void __cdecl ImGui_ImplGlfw_SetWindowFocus(struct ImGuiViewport *)" (?ImGui_ImplGlfw_SetWindowFocus@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetWindowAttrib przywołany w funkcji "bool __cdecl ImGui_ImplGlfw_GetWindowFocus(struct ImGuiViewport *)" (?ImGui_ImplGlfw_GetWindowFocus@@YA_NPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowPosCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowSizeCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowCloseCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetWindowFocusCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetInputMode przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CursorEnterCallback(struct GLFWwindow *,int)" (?ImGui_ImplGlfw_CursorEnterCallback@@YAXPAUGLFWwindow@@H@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetInputMode przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMouseCursor(void)" (?ImGui_ImplGlfw_UpdateMouseCursor@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetKeyName przywołany w funkcji "int __cdecl ImGui_ImplGlfw_TranslateUntranslatedKey(int,int)" (?ImGui_ImplGlfw_TranslateUntranslatedKey@@YAHHH@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetKey przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateKeyModifiers(void)" (?ImGui_ImplGlfw_UpdateKeyModifiers@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetCursorPos przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMouseData(void)" (?ImGui_ImplGlfw_UpdateMouseData@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetCursorPos przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMouseData(void)" (?ImGui_ImplGlfw_UpdateMouseData@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwCreateStandardCursor przywołany w funkcji "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwDestroyCursor przywołany w funkcji "void __cdecl ImGui_ImplGlfw_Shutdown(void)" (?ImGui_ImplGlfw_Shutdown@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetCursor przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateMouseCursor(void)" (?ImGui_ImplGlfw_UpdateMouseCursor@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetKeyCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetCharCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetMouseButtonCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetCursorPosCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetCursorEnterCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetScrollCallback przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetGamepadState przywołany w funkcji "void __cdecl ImGui_ImplGlfw_UpdateGamepads(void)" (?ImGui_ImplGlfw_UpdateGamepads@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwSetClipboardString przywołany w funkcji "void __cdecl ImGui_ImplGlfw_SetClipboardText(void *,char const *)" (?ImGui_ImplGlfw_SetClipboardText@@YAXPAXPBD@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetClipboardString przywołany w funkcji "char const * __cdecl ImGui_ImplGlfw_GetClipboardText(void *)" (?ImGui_ImplGlfw_GetClipboardText@@YAPBDPAX@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetTime przywołany w funkcji "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwGetWin32Window przywołany w funkcji "void __cdecl ImGui_ImplGlfw_CreateWindow(struct ImGuiViewport *)" (?ImGui_ImplGlfw_CreateWindow@@YAXPAUImGuiViewport@@@Z)
+imgui_impl_glfw.obj : error LNK2019: nierozpoznany symbol zewnętrzny _glfwCreateWindowSurface przywołany w funkcji "int __cdecl ImGui_ImplGlfw_CreateVkSurface(struct ImGuiViewport *,unsigned __int64,void const *,unsigned __int64 *)" (?ImGui_ImplGlfw_CreateVkSurface@@YAHPAUImGuiViewport@@_KPBXPA_K@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: nierozpoznany symbol zewnętrzny _main przywołany w funkcji "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+..\Libraries\assimp-vc143-mtd.lib : warning LNK4272: wystąpił konflikt typu maszyny biblioteki „x64” z typem maszyny docelowej „x86”
+..\Libraries\glfw3.lib : warning LNK4272: wystąpił konflikt typu maszyny biblioteki „x64” z typem maszyny docelowej „x86”
+..\Libraries\liblz4_static.lib : warning LNK4272: wystąpił konflikt typu maszyny biblioteki „x64” z typem maszyny docelowej „x86”
+Binaries\build\Engine\Engine.exe : fatal error LNK1120: liczba nierozpoznanych elementów zewnętrznych: 57
