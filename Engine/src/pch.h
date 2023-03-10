@@ -1,3 +1,6 @@
+//Disable warnings
+#pragma warning( disable : 4244 ) 
+#pragma warning( disable : 4267)
 //C++ Headers
 #include <iostream>
 #include <vector>

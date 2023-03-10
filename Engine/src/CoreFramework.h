@@ -92,6 +92,8 @@ public:
 	static std::vector<Actor*> actors;
 	static std::vector<Actor*> actorsQueue;
 
+	static Geometry* geometry;
+
 	static Actor* CreateActor();
 	static Actor* CreateActorInQueue();
 

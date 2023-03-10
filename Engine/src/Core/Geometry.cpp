@@ -16,6 +16,7 @@ Renderer* Geometry::getCube(GPUMaterial* material)
 		material->useLighting = true;
 		material->texture = nullptr;
 		material->albedoColor = glm::vec3(1, 1, 1);
+		renderer->material = material;
 	}
 	renderer->mesh = this->cube;
 	return renderer;

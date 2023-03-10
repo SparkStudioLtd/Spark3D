@@ -12,8 +12,6 @@ void GPUContext::createAdapterAndContext() {
     }
 
     glViewport(0, 0, this->window->width, this->window->height);
-
-    this->unbaseVars["geometry"] = new Geometry();
 }
 
 

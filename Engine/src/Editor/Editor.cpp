@@ -242,23 +242,17 @@ void renderViewport() {
     ImGui::End();
 
     ImGui::Begin("Content");
+    for (Asset* asset : AssetManager::m_Assets) {
+        ImGui::Text(asset->m_Name.c_str());
+    }
     ImGui::End();
 
     ImGui::Begin("Toolbox");
     if (ImGui::Button("Cube")) {
         Actor* actor = Spark::CreateActorInQueue();
 
-        Renderer* renderer = new Renderer();
-            GPUMaterial* material = new GPUMaterial();
-            material->useLighting = true;
-            material->texture = nullptr;
-            material->albedoColor = glm::vec3(1, 1, 1);
-            renderer->mesh = ModelLoader::loadMesh(Spark::graphicsContext, "./res/geom/cube.obj");
-            renderer->material = material;
-
-            actor->transform->position = glm::vec3(0, 0, -4);
-
-        actor->addComponent(renderer);
+        actor->addComponent(Spark::geometry->getCube());
+        actor->addComponent(new Monkey());
 
     }
     ImGui::End();

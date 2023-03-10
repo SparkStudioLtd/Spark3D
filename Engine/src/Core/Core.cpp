@@ -32,6 +32,7 @@ GPUContext* Spark::graphicsContext = new GPUContext();
 ShaderManager* Spark::shaderManager = new ShaderManager();
 std::vector<Actor*> Spark::actors = std::vector<Actor*>();
 std::vector<Actor*> Spark::actorsQueue = std::vector<Actor*>();
+Geometry* Spark::geometry = new Geometry();
 ApplicationSpecification Spark::applicationSpecification = ApplicationSpecification();
 void Spark::EnterLoop() {
 	while (m_ApplicationRunning) {

@@ -47,6 +47,8 @@ void InitalizeJob::execute(Event* event) {
 
 	Spark::graphicsContext->createAtmosphere();
 
+	Spark::geometry->init();
+
 	this->log("Initalized engine");
 }
 
