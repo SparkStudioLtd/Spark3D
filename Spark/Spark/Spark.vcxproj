@@ -23,6 +23,7 @@
     <ClCompile Include="src\Core\AssetManager.cpp" />
     <ClCompile Include="src\Core\Components\Transform.cpp" />
     <ClCompile Include="src\Core\Core.cpp" />
+    <ClCompile Include="src\Core\Geometry.cpp" />
     <ClCompile Include="src\Core\Graphics\Camera.cpp" />
     <ClCompile Include="src\Core\Graphics\OpenGL\GPUBuffer.cpp" />
     <ClCompile Include="src\Core\Graphics\OpenGL\GPUContext.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="src\Core\AssetManager.h" />
     <ClInclude Include="src\Core\Components\Transform.h" />
     <ClInclude Include="src\Core\Event.h" />
+    <ClInclude Include="src\Core\Geometry.h" />
     <ClInclude Include="src\Core\Graphics\Graphics.h" />
     <ClInclude Include="src\Core\JobSystem.h" />
     <ClInclude Include="src\Core\JSON.h" />

@@ -62,24 +62,8 @@ public:
 	}
 };
 
+
 void Hook::appReady() {
-	Actor* actora = Spark::CreateActor();
-
-	GPUMaterial* material = new GPUMaterial();
-	material->albedoColor = glm::vec3(1, 1, 1);
-	material->texture = nullptr;
-	material->useLighting = true;
-	actora->transform->scale = glm::vec3(0.6f, 0.6f, 0.6f);
-	actora->transform->position = glm::vec3(0, -0.3f, -5);
-	actora->transform->rotation = glm::vec3(0, 70, 0);
-	
-
-
-	Renderer* renderer = new Renderer();
-	renderer->material = material;
-	renderer->mesh = ModelLoader::loadMesh(Spark::graphicsContext, "./res/cube.obj");
-	actora->addComponent(renderer);
-	actora->addComponent(new Monkey());
 
 	Actor* guiActor = Spark::CreateActor();
 	guiActor->addComponent(new UI());
@@ -200,7 +184,8 @@ void UISetMorganStyle()
 
 void Hook::imguiInit() {
     UISetMorganStyle();
-    ImGui::GetIO().Fonts->AddFontFromFileTTF("./res/Editor/Roboto.ttf", 15.0f);
+    Asset* asset = AssetManager::getAsset("EditorContent_Fonts_Roboto");
+    ImGui::GetIO().Fonts->AddFontFromMemoryTTF(&asset->m_LoadedAsset.blob[0], sizeof(&asset->m_LoadedAsset.blob[0]), 15);
 }
 
 void renderViewport() {
@@ -215,6 +200,14 @@ void renderViewport() {
     ImGui::End();
 
     ImGui::Begin("Content");
+    ImGui::End();
+
+    ImGui::Begin("Toolbox");
+    if (ImGui::Button("Cube")) {
+        Actor* actor = Spark::CreateActor();
+        Renderer* renderer = new Renderer();
+
+    }
     ImGui::End();
 
     ImGui::Begin("Performance");

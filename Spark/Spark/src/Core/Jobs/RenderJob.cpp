@@ -72,6 +72,7 @@ void RenderJob::execute(Event* event) {
 	//this->log("Polling events");
 	glfwPollEvents();
 	//this->log("Swaping Buffers");
+	glfwSwapInterval(0);
 	glfwSwapBuffers(Spark::graphicsContext->window->unbaseVars["windowHandle"].get<GLFWwindow*>());
 }
 

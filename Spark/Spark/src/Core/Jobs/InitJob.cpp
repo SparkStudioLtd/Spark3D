@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Core/Spark.h"
+#include <Core/ModelLoader.h>
 
 void InitalizeJob::setup() {
 	this->m_DebugName = "Initalize";
@@ -7,12 +8,28 @@ void InitalizeJob::setup() {
 	this->m_syncType = SYNC;
 }
 
+class Renderer : public Component {
+public:
+	GPUMesh* mesh;
+	GPUMaterial* material;
+	virtual void BeginPlay(Actor* actor) {
+
+	}
+	virtual void Update(Actor* actor) {
+
+	}
+	virtual void Render(GPUContext* context, Actor* actor) {
+		if (context->renderingToDepthMap) {
+			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, this->material);
+		}
+		else {
+			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("GBuffer"), actor->transform, this->material);
+		}
+	}
+};
+
 void InitalizeJob::execute(Event* event) {
 	AssetManager::loadFromFolder();
-
-	//Asset* asset = new Asset();
-	//asset->m_Path = "C:\\Users\\xpiot\\Documents\\test.shader";
-	//asset->save();
 
 	Spark::graphicsContext->window = new GPUWindow();
 	Spark::graphicsContext->window->createWindow(Spark::applicationSpecification.Name, Spark::applicationSpecification.Width, Spark::applicationSpecification.Height);
@@ -26,6 +43,8 @@ void InitalizeJob::execute(Event* event) {
 	Spark::graphicsContext->createAdapterAndContext();
 
 	Hook::appReady();
+
+	Actor* actora = Spark::CreateActor();
 
 	std::string graphicsApi = "opengl";
 	std::string vertexShaderExt = "vert";

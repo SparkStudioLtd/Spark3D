@@ -24,7 +24,7 @@ void GPUMesh::drawDirect(GPUContext* context, GPUShader* shader, GPUMaterial* ma
 
     //lighting
     shader->shaderInputDataVec3("lightColor", glm::vec3(1, 1, 1));
-    shader->shaderInputDataVec3("lightDire", glm::vec3(-2, 4, -1));
+    shader->shaderInputDataVec3("lightDire", glm::vec3(0,10,0));
     shader->shaderInputDataVec3("eyePos", context->camera->position);
 
     float near_plane = 1.0f, far_plane = 7.5f;

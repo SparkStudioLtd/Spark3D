@@ -7,6 +7,10 @@
 #include <any>
 #include <sstream>
 #include <map>
+#include <filesystem>
+
+//C++ Namespaces
+namespace fs = std::filesystem;
 
 //Thirdparty headers
 #include "Thirdparty/glm/glm.hpp"

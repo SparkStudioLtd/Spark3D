@@ -1,7 +1,7 @@
 #include "Core/Graphics/Graphics.h"
-#include <Core/ModelLoader.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <Thirdparty/stb_image.h>
+#include <Core/Geometry.h>
 
 void GPUContext::createAdapterAndContext() {
 
@@ -13,6 +13,8 @@ void GPUContext::createAdapterAndContext() {
     }
 
     glViewport(0, 0, this->window->width, this->window->height);
+
+    this->unbaseVars["geometry"] = new Geometry();
 }
 
 
@@ -314,7 +316,7 @@ GPUTexture* GPUContext::createTexture(std::string filepath)
 void GPUContext::createAtmosphere()
 {
     this->skybox = new GPUSkybox();
-    this->skybox->cubeMesh = ModelLoader::loadMesh(this, "./res/cube.obj");
+    this->skybox->cubeMesh = ModelLoader::loadMesh(this, "./res/geom/cube.obj");
 }
 
 void GPUContext::drawQueue(GPUMesh* mesh, GPUShader* shader, Transform* transform, GPUMaterial* material)
