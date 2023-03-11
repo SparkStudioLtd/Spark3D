@@ -1,56 +1,4 @@
 #include "Editor.h"
-#include <imgui/imgui_internal.h>
-#include <imgui/imgui_stdlib.h>
-
-
-class Monkey : public Component {
-public:
-	virtual void BeginPlay(Actor* actor) {
-	}
-	virtual void Update(Actor* actor) {
-        this->name = "Rotator";
-	}
-	virtual void Render(GPUContext* context, Actor* actor) {
-        actor->transform->setRotation(actor->transform->getRotation() + 1.0f);
-	}
-};
-
-class UI : public Component {
-public:
-	virtual void BeginPlay(Actor* actor) {
-		Spark::graphicsContext->useGui = true;
-		GLFWwindow* window = Spark::graphicsContext->window->unbaseVars["windowHandle"].get<GLFWwindow*>();
-		IMGUI_CHECKVERSION();
-		ImGui::CreateContext();
-		ImGuiIO& io = ImGui::GetIO(); (void)io;
-		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-		ImGui::StyleColorsDark();
-		Hook::imguiInit();
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init("#version 330 core");
-	}
-	virtual void Render(GPUContext* context,Actor* actor) {
-		GLFWwindow* window = Spark::graphicsContext->window->unbaseVars["windowHandle"].get<GLFWwindow*>();
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
-		Hook::imguiRender();
-
-		ImGui::Render();
-	}
-	virtual void Update(Actor* actor) {
-		this->priorityRendering = true;
-	}
-};
-
-
-void Hook::appReady() {
-
-	Actor* guiActor = Spark::CreateActor();
-	guiActor->addComponent(new UI());
-}
 
 namespace Colours {
     namespace Theme
@@ -151,9 +99,9 @@ void UISetMorganStyle()
 
     // Tables
     colors[ImGuiCol_TableHeaderBg] = ImGui::ColorConvertU32ToFloat4(IM_COL32(26, 26, 26, 255));
-    colors[ImGuiCol_TableRowBgAlt] = ImGui::ColorConvertU32ToFloat4(Colours::Theme::backgroundDark);
-    colors[ImGuiCol_TableRowBg] = ImGui::ColorConvertU32ToFloat4(Colours::Theme::groupHeader);
-    colors[ImGuiCol_TableBorderLight] = ImGui::ColorConvertU32ToFloat4(IM_COL32(20, 20, 20, 255));
+    colors[ImGuiCol_TableRowBgAlt] = ImGui::ColorConvertU32ToFloat4(IM_COL32(32, 32, 32, 255));
+    colors[ImGuiCol_TableRowBg] = ImGui::ColorConvertU32ToFloat4(IM_COL32(24, 24, 24, 255));
+    colors[ImGuiCol_TableBorderLight] = ImGui::ColorConvertU32ToFloat4(IM_COL32(24, 24, 24, 255));
 
     // Menubar
     colors[ImGuiCol_MenuBarBg] = ImVec4{ 0.0f, 0.0f, 0.0f, 0.0f };
@@ -165,214 +113,21 @@ void UISetMorganStyle()
     style.IndentSpacing = 11.0f;
 }
 
-void Hook::imguiInit() {
-    UISetMorganStyle();
-    Asset* asset = AssetManager::getAsset("EditorContent_Fonts_Roboto");
-    ImGui::GetIO().Fonts->AddFontFromMemoryTTF(&asset->m_LoadedAsset.blob[0], sizeof(&asset->m_LoadedAsset.blob[0]), 15);
-}
-
-void DrawVec3Control(const std::string& label, glm::vec3& values, float resetValue = 0.0f, float columnWidth = 100.0f)
+void Editor::init()
 {
-    ImGuiIO& io = ImGui::GetIO();
-    auto boldFont = io.Fonts->Fonts[0];
+	UISetMorganStyle();
+	Asset* asset = AssetManager::getAsset("EditorContent_Fonts_Roboto");
+	ImGui::GetIO().Fonts->AddFontFromMemoryTTF(&asset->m_LoadedAsset.blob[0], sizeof(&asset->m_LoadedAsset.blob[0]), 15);
 
-    ImGui::PushID(label.c_str());
-
-    ImGui::Columns(2);
-    ImGui::SetColumnWidth(0, columnWidth);
-    ImGui::Text(label.c_str());
-    ImGui::NextColumn();
-
-    ImGui::PushMultiItemsWidths(3, ImGui::CalcItemWidth());
-    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{ 0, 0 });
-
-    float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
-    ImVec2 buttonSize = { lineHeight + 3.0f, lineHeight };
-
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-    ImGui::PushFont(boldFont);
-    if (ImGui::Button("X", buttonSize))
-        values.x = resetValue;
-    ImGui::PopFont();
-    ImGui::PopStyleColor(3);
-
-    ImGui::SameLine();
-    ImGui::DragFloat("##X", &values.x, 0.1f, 0.0f, 0.0f, "%.2f");
-    ImGui::PopItemWidth();
-    ImGui::SameLine();
-
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-    ImGui::PushFont(boldFont);
-    if (ImGui::Button("Y", buttonSize))
-        values.y = resetValue;
-    ImGui::PopFont();
-    ImGui::PopStyleColor(3);
-
-    ImGui::SameLine();
-    ImGui::DragFloat("##Y", &values.y, 0.1f, 0.0f, 0.0f, "%.2f");
-    ImGui::PopItemWidth();
-    ImGui::SameLine();
-
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.35f, 0.9f, 1.0f });
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
-    ImGui::PushFont(boldFont);
-    if (ImGui::Button("Z", buttonSize))
-        values.z = resetValue;
-    ImGui::PopFont();
-    ImGui::PopStyleColor(3);
-
-    ImGui::SameLine();
-    ImGui::DragFloat("##Z", &values.z, 0.1f, 0.0f, 0.0f, "%.2f");
-    ImGui::PopItemWidth();
-
-    ImGui::PopStyleVar();
-
-    ImGui::Columns(1);
-
-    ImGui::PopID();
+	this->panelManager->registerPanel<ActorInfoPanel>("Actor", true);
+    this->panelManager->registerPanel<ViewportPanel>("Viewport", true);
+    this->panelManager->registerPanel<ScenePanel>("Scene", true);
+    this->panelManager->registerPanel<ContentPanel>("Content", true);
+    this->panelManager->registerPanel<PerformancePanel>("Performance", true);
+    this->panelManager->registerPanel<ToolboxPanel>("Toolbox", true);
 }
 
-
-Actor* selectedActor = nullptr;
-
-void renderViewport() {
-    ImGui::Begin("Viewport");
-    ImGui::Image((void*)std::any_cast<int>(Spark::graphicsContext->renderPasses[1]->framebuffer->unbaseVars["textureColorBuffer"]), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0));
-    ImGui::End();
-
-    ImGui::Begin("Scene");
-
-    ImGuiTableFlags tableFlags = ImGuiTableFlags_NoPadInnerX
-        | ImGuiTableFlags_Resizable
-        | ImGuiTableFlags_Reorderable
-        | ImGuiTableFlags_ScrollY
-        | ImGuiTableFlags_RowBg; //*| ImGuiTableFlags_Sortable*/;
-
-
-    ImGui::BeginTable("#hierarhy", 3, tableFlags);
-
-    ImGui::TableSetupColumn("Name");
-    ImGui::TableSetupColumn("Type");
-    ImGui::TableSetupColumn("Select");
-
-
-    ImGui::TableSetupScrollFreeze(ImGui::TableGetColumnCount(), 1);
-    ImGui::TableNextRow(ImGuiTableRowFlags_Headers, 22.0f);
-    for (int column = 0; column < ImGui::TableGetColumnCount(); column++)
-    {
-        ImGui::TableSetColumnIndex(column);
-        const char* column_name = ImGui::TableGetColumnName(column);
-        ImGui::TableHeader(column_name);
-    }
-    ImGui::SetCursorPosX(ImGui::GetCurrentTable()->OuterRect.Min.x);
-
-    for (int index = 0; index < Spark::actors.size(); index++) {
-        Actor* actor = Spark::actors[index];
-        ImGui::TableNextColumn();
-        ImGui::Text(actor->name.c_str());
-        ImGui::TableNextColumn();
-        ImGui::Text("");
-        ImGui::TableNextColumn();
-        if (ImGui::Button((std::string("Select##") + std::to_string(index)).c_str())) {
-            selectedActor = actor;
-        }
-    }
-
-
-    ImGui::EndTable();
-    ImGui::End();
-
-    ImGui::Begin("Actor");
-    if (selectedActor == nullptr) {
-        ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
-        ImGui::SetWindowFontScale(0.945f);
-        ImGui::Text("Select any actor");
-        ImGui::PopStyleColor();
-        ImGui::SetWindowFontScale(1.0f);
-    }
-    else {
-        ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
-        ImGui::SetWindowFontScale(0.945f);
-        ImGui::Text("Name:");
-        ImGui::PopStyleColor();
-        ImGui::SetWindowFontScale(1.0f);
-        ImGui::SameLine();
-        ImGui::InputText("##actorName", &selectedActor->name);
-        ImGui::NewLine();
-
-        ImGui::Separator();
-        for (Component* component : selectedActor->components) {
-            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
-            ImGui::SetWindowFontScale(0.945f);
-            ImGui::Text(component->name.c_str());
-            ImGui::PopStyleColor();
-            ImGui::SetWindowFontScale(1.0f);
-
-            for (auto const& value : component->components) {
-                ImGui::Text(value.first.c_str());
-
-                ImGui::SameLine();
-
-                std::string strType_identifier = "";
-                int intType_identifier = 0;
-                glm::vec3 vecType_identifier = glm::vec3(0, 0, 0);
-
-                const char* strType = typeid(strType_identifier).name();
-                const char* intType = typeid(intType_identifier).name();
-                const char* vecType = typeid(vecType_identifier).name();
-
-                const char* compomentValue = value.second.m_Handle.type().name();
-
-                std::any finalVal = value.second;
-
-                if (compomentValue == vecType) {
-                    glm::vec3 valueVec = std::any_cast<glm::vec3>(value.second.m_Handle);
-                    DrawVec3Control(value.first, valueVec);
-                    if (valueVec != std::any_cast<glm::vec3>(value.second.m_Handle)) {
-                        component->components[value.first].set<glm::vec3>(valueVec);
-                    }
-                }
-
-            }
-            ImGui::Separator();
-
-        }
-    }
-    ImGui::End();
-
-    ImGui::Begin("Content");
-    for (Asset* asset : AssetManager::m_Assets) {
-        ImGui::Text(asset->m_Name.c_str());
-    }
-    ImGui::End();
-
-    ImGui::Begin("Toolbox");
-    if (ImGui::Button("Cube")) {
-        Actor* actor = Spark::CreateActorInQueue();
-
-        actor->addComponent(Spark::geometry->getCube());
-        actor->addComponent(new Monkey());
-
-    }
-    ImGui::End();
-
-    ImGui::Begin("Performance");
-    ImGui::Text((std::string("Actor Count: ") + std::to_string(Spark::actors.size())).c_str());
-    ImGui::Text((std::string("Actor In Queue Count: ") + std::to_string(Spark::actorsQueue.size())).c_str());
-    ImGui::Text((std::string("Frames Per Secound: ") + std::to_string(Spark::framesPerSecound)).c_str());
-    if (Spark::graphicsVendor != "") {
-        ImGui::Text((std::string("Graphics Vendor: ") + Spark::graphicsVendor).c_str());
-        ImGui::Text((std::string("Graphics Renderer: ") + Spark::graphicsRendererVendor).c_str());
-    }
-    ImGui::End();
-}
-
-void Hook::imguiRender() {
+void Editor::render() {
     ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking;
     ImGuiViewport* viewport = ImGui::GetMainViewport();
     ImGui::SetNextWindowPos(viewport->Pos);
@@ -390,7 +145,15 @@ void Hook::imguiRender() {
 
         ImGui::SetCursorPosY(64);
         ImGui::DockSpace(ImGui::GetID("MyDockspace"));
-        renderViewport();
+        for (Panel* panel : this->panelManager->m_Panels) {
+            if (panel->m_Show) {
+                ImGui::Begin(panel->m_Name.c_str());
+                panel->selectedActor = this->selectedActor;
+                panel->render();
+                this->selectedActor = panel->selectedActor;
+                ImGui::End();
+            }
+        }
     }
     ImGui::End();
 }
