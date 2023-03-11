@@ -6,6 +6,7 @@ Actor* Spark::CreateActor()
 {
 	Actor* actor = new Actor();
 	actor->transform = new Transform();
+	actor->transform->setTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
 	actor->transform->name = "Transform";
 	actor->addComponent(actor->transform);
 	Spark::actors.push_back(actor);
@@ -16,6 +17,7 @@ Actor* Spark::CreateActorInQueue()
 {
 	Actor* actor = new Actor();
 	actor->transform = new Transform();
+	actor->transform->setTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
 	actor->transform->name = "Transform";
 	actor->addComponent(actor->transform);
 	Spark::actorsQueue.push_back(actor);

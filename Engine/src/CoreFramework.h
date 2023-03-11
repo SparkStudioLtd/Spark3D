@@ -52,6 +52,22 @@ struct Vertex;
 class Component;
 class Actor;
 
+class Obj {
+public:
+	std::any m_Handle;
+	Obj() {}
+	Obj(std::any g_Handle) {
+		this->m_Handle = g_Handle;
+	}
+	template<typename T> T get() {
+		return std::any_cast<T>(this->m_Handle);
+	};
+	template<typename T> void set(T clazz) {
+		this->m_Handle = clazz;
+	}
+};
+
+
 struct Color {
 public:
 	float red, green, blue, alpha;
@@ -110,6 +126,7 @@ public:
 class Component {
 public:
 	std::string name;
+	std::map<std::string, Obj> components;
 	bool priorityRendering = false;
 	virtual void BeginPlay(Actor* actor);
 	virtual void Update(Actor* actor);
@@ -265,18 +282,41 @@ public:
 
 class Transform : public Component {
 public:
-	glm::vec3 position = glm::vec3(0, 0, 0);
-	glm::vec3 rotation = glm::vec3(0, 0, 0);
-	glm::vec3 scale = glm::vec3(1, 1, 1);
+	glm::vec3 getPosition() {
+		return components["Position"].get<glm::vec3>();
+	}
+	glm::vec3 getRotation() {
+		return components["Rotation"].get<glm::vec3>();
+	}
+	glm::vec3 getScale() {
+		return components["Scale"].get<glm::vec3>();
+	}
+	void setPosition(glm::vec3 position) {
+		components["Position"].set<glm::vec3>(position);
+	}
+	void setRotation(glm::vec3 rotation) {
+		components["Rotation"].set<glm::vec3>(rotation);
+	}
+	void setScale(glm::vec3 scale) {
+		components["Scale"].set<glm::vec3>(scale);
+	}
+	void setTransform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale) {
+		this->setPosition(position);
+		this->setRotation(rotation);
+		this->setScale(scale);
+	}
+
 	virtual void BeginPlay(Actor* actor) {}
 	virtual void Update(Actor* actor) {
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {}
 	glm::vec3 getForward() {
-		return glm::vec3(cos(this->rotation.x) * sin(this->rotation.y), -sin(this->rotation.x), cos(this->rotation.x) * cos(this->rotation.y));
+		glm::vec3 rotation = this->getRotation();
+		return glm::vec3(cos(rotation.x) * sin(rotation.y), -sin(rotation.x), cos(rotation.x) * cos(rotation.y));
 	}
 	glm::vec3 getRight() {
-		return glm::vec3(cos(this->rotation.y), 0, -sin(this->rotation.y));
+		glm::vec3 rotation = this->getRotation();
+		return glm::vec3(cos(rotation.y), 0, -sin(rotation.y));
 	}
 	glm::vec3 getUp() {
 		return glm::cross(this->getForward(), this->getRight());
@@ -392,22 +432,6 @@ public:
 	static GPUMesh* loadMesh(GPUContext* context, std::string file);
 };
 
-
-
-class Obj {
-public:
-	std::any m_Handle;
-	Obj() {}
-	Obj(std::any g_Handle) {
-		this->m_Handle = g_Handle;
-	}
-	template<typename T> T get() {
-		return std::any_cast<T>(this->m_Handle);
-	};
-	template<typename T> void set(T clazz) {
-		this->m_Handle = clazz;
-	}
-};
 
 class Renderer : public Component {
 public:

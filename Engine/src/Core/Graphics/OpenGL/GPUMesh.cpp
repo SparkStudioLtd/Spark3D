@@ -7,11 +7,11 @@ void GPUMesh::drawDirect(GPUContext* context, GPUShader* shader, GPUMaterial* ma
 
 
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, transform->position);
-    model = glm::rotate(model, glm::radians(transform->rotation.x), glm::vec3(1, 0, 0));
-    model = glm::rotate(model, glm::radians(transform->rotation.y), glm::vec3(0, 1, 0));
-    model = glm::rotate(model, glm::radians(transform->rotation.z), glm::vec3(0, 0, 1));
-    model = glm::scale(model, transform->scale);
+    model = glm::translate(model, transform->getPosition());
+    model = glm::rotate(model, glm::radians(transform->getRotation().x), glm::vec3(1, 0, 0));
+    model = glm::rotate(model, glm::radians(transform->getRotation().y), glm::vec3(0, 1, 0));
+    model = glm::rotate(model, glm::radians(transform->getRotation().z), glm::vec3(0, 0, 1));
+    model = glm::scale(model, transform->getScale());
 
     shader->shaderInputDataMat4("model", model);
     shader->shaderInputDataMat4("projection", context->camera->getProjectionMatrix(context));
