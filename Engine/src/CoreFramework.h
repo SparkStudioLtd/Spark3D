@@ -1,8 +1,7 @@
 #include "pch.h"
 
 //I'm only human after all
-//Don't put your blame on me
-//Don't put your blame on me
+//I'm only human after all
 
 //moved to one header cuz linker errors...
 
@@ -97,6 +96,11 @@ public:
 	static Actor* CreateActor();
 	static Actor* CreateActorInQueue();
 
+	static int framesPerSecound;
+
+	static std::string graphicsVendor;
+	static std::string graphicsRendererVendor;
+
 	static void CreateCore();
 	static void RegisterApplicationSpecification(ApplicationSpecification appSpec);
 	static void EnterLoop();
@@ -105,6 +109,7 @@ public:
 
 class Component {
 public:
+	std::string name;
 	bool priorityRendering = false;
 	virtual void BeginPlay(Actor* actor);
 	virtual void Update(Actor* actor);
@@ -264,7 +269,8 @@ public:
 	glm::vec3 rotation = glm::vec3(0, 0, 0);
 	glm::vec3 scale = glm::vec3(1, 1, 1);
 	virtual void BeginPlay(Actor* actor) {}
-	virtual void Update(Actor* actor) {}
+	virtual void Update(Actor* actor) {
+	}
 	virtual void Render(GPUContext* context, Actor* actor) {}
 	glm::vec3 getForward() {
 		return glm::vec3(cos(this->rotation.x) * sin(this->rotation.y), -sin(this->rotation.x), cos(this->rotation.x) * cos(this->rotation.y));
@@ -411,7 +417,7 @@ public:
 
 	}
 	virtual void Update(Actor* actor) {
-
+		this->name = "Renderer";
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {
 		if (context->renderingToDepthMap) {

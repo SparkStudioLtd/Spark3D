@@ -8,9 +8,10 @@ public:
 	virtual void BeginPlay(Actor* actor) {
 	}
 	virtual void Update(Actor* actor) {
-
+        this->name = "Rotator";
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {
+        actor->transform->position = glm::vec3(0, 0, -5);
 		actor->transform->rotation += 1;
 	}
 };
@@ -238,6 +239,14 @@ void renderViewport() {
         ImGui::SameLine();
         ImGui::InputText("##actorName", &selectedActor->name);
         ImGui::NewLine();
+
+        for (Component* component : selectedActor->components) {
+            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(120, 120, 120, 255));
+            ImGui::SetWindowFontScale(0.945f);
+            ImGui::Text(component->name.c_str());
+            ImGui::PopStyleColor();
+            ImGui::SetWindowFontScale(1.0f);
+        }
     }
     ImGui::End();
 
@@ -258,6 +267,13 @@ void renderViewport() {
     ImGui::End();
 
     ImGui::Begin("Performance");
+    ImGui::Text((std::string("Actor Count: ") + std::to_string(Spark::actors.size())).c_str());
+    ImGui::Text((std::string("Actor In Queue Count: ") + std::to_string(Spark::actorsQueue.size())).c_str());
+    ImGui::Text((std::string("Frames Per Secound: ") + std::to_string(Spark::framesPerSecound)).c_str());
+    if (Spark::graphicsVendor != "") {
+        ImGui::Text((std::string("Graphics Vendor: ") + Spark::graphicsVendor).c_str());
+        ImGui::Text((std::string("Graphics Renderer: ") + Spark::graphicsVendor).c_str());
+    }
     ImGui::End();
 }
 
