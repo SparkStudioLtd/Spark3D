@@ -148,12 +148,63 @@ void Editor::render() {
         for (Panel* panel : this->panelManager->m_Panels) {
             if (panel->m_Show) {
                 ImGui::Begin(panel->m_Name.c_str());
+                panel->editor = Obj(this);
                 panel->selectedActor = this->selectedActor;
-                panel->render();
+                if (panel->m_Name == "Viewport") {
+                    if (ImGui::ImageButton((void*)std::any_cast<int>(Spark::graphicsContext->renderPasses[1]->framebuffer->unbaseVars["textureColorBuffer"]), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0))) {
+                        this->viewportCamera->mouseHooked = true;
+                    }
+                }
+                else {
+                    panel->render();
+                }
                 this->selectedActor = panel->selectedActor;
                 ImGui::End();
             }
         }
     }
     ImGui::End();
+
+    //Process engine
+    
+    GLFWwindow* window = Spark::graphicsContext->window->unbaseVars["windowHandle"].get<GLFWwindow*>();
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        this->viewportCamera->mouseHooked = false;
+    }
+    if (this->viewportCamera->mouseHooked) {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+        float moveX = sin(glm::radians(Spark::graphicsContext->camera->rotation.y)) * 0.05f;
+        float moveZ = cos(glm::radians(Spark::graphicsContext->camera->rotation.y)) * 0.05f;
+        float moveY = sin(glm::radians(Spark::graphicsContext->camera->rotation.x)) * 0.05f;
+
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+            Spark::graphicsContext->camera->position += glm::vec3(-moveX, moveY, -moveZ);
+        }
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+            Spark::graphicsContext->camera->position += glm::vec3(moveX, -moveY, moveZ);
+        }
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+            Spark::graphicsContext->camera->position += glm::vec3(-moveZ, 0, moveX);
+        }
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+            Spark::graphicsContext->camera->position += glm::vec3(moveZ, 0, -moveX);
+        }
+
+        double x, y;
+        glfwGetCursorPos(window, &x, &y);
+        float mouseX = x;
+        float mouseY = y;
+
+        float deltaX = (mouseX - this->viewportCamera->lastX) * 0.05f;
+        float deltaY = (mouseY - this->viewportCamera->lastY) * 0.05f;
+
+        Spark::graphicsContext->camera->rotation += glm::vec3(-deltaY, -deltaX, 0);
+
+        this->viewportCamera->lastX = mouseX;
+        this->viewportCamera->lastY = mouseY;
+    }
+    else {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
 }

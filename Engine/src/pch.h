@@ -17,11 +17,14 @@
 namespace fs = std::filesystem;
 
 //Thirdparty headers
+#define GLM_ENABLE_EXPERIMENTAL
 #include "Thirdparty/glm/glm.hpp"
 #include "Thirdparty/glm/gtc/type_ptr.hpp"
 #include "Thirdparty/glm/gtc/matrix_transform.hpp"
 #include "Thirdparty/glm/gtc/quaternion.hpp"
 #include "Thirdparty/glm/gtc/matrix_inverse.hpp"
+#include "Thirdparty/glm/detail/type_quat.hpp"
+#include "Thirdparty/glm/gtx/quaternion.hpp"
 
 #include "Thirdparty/glad/glad.h"
 #include "Thirdparty/GLFW/glfw3.h"

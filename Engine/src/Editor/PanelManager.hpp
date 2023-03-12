@@ -5,6 +5,7 @@
 
 class Panel {
 public:
+	Obj editor;
 	Actor* selectedActor;
 	std::string m_Name;
 	bool m_Show;

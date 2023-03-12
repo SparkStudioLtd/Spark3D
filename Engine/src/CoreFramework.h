@@ -231,21 +231,14 @@ public:
 	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0);
 
 	glm::quat getOrientation() {
-		return glm::quat(glm::vec3(rotation.x, rotation.y, rotation.z));
+		return glm::quat(glm::vec3(-rotation.x, -rotation.y, 0.0f));
 	}
 
 	glm::vec3 getForward() {
-		//glm::quat rotation = this->getOrientation();
-		//glm::vec3 vector = glm::vec3(0, 0, 1);
-		//return MathExtVecCalc::transformQuaT(vector, rotation);
-		//TODO
-		return glm::vec3(0, 0, 0);
+		return glm::rotate(getOrientation(), glm::vec3(0, 0, -1.0f));
 	}
 	glm::vec3 getRight() {
-		return glm::vec3(cos(this->rotation.y), 0, -sin(this->rotation.y));
-	}
-	glm::vec3 getUp() {
-		return glm::cross(this->getForward(), this->getRight());
+		return glm::rotate(getOrientation(), glm::vec3(1.0f, 0, 0.0f));
 	}
 
 	bool firstMouse = true;
@@ -378,15 +371,8 @@ public:
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {}
 	glm::vec3 getForward() {
-		glm::vec3 rotation = this->getRotation();
-		return glm::vec3(cos(rotation.x) * sin(rotation.y), -sin(rotation.x), cos(rotation.x) * cos(rotation.y));
-	}
-	glm::vec3 getRight() {
-		glm::vec3 rotation = this->getRotation();
-		return glm::vec3(cos(rotation.y), 0, -sin(rotation.y));
-	}
-	glm::vec3 getUp() {
-		return glm::cross(this->getForward(), this->getRight());
+		glm::quat orientation = glm::quat(this->getRotation());
+		return glm::rotate(orientation, glm::vec3(0, 0, -1.0f));
 	}
 };
 
