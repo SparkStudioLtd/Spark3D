@@ -21,7 +21,21 @@ public:
 
             Monkey* monkey = new Monkey();
             monkey->BeginPlay(actor);
-            actor->addComponent(Spark::geometry->getCube());
+            GPUMaterial* material = new GPUMaterial();
+            material->useLighting = true;
+            material->texture = Spark::graphicsContext->createTexture("./res/burger.png");
+
+
+            Renderer* renderer = new Renderer();
+            renderer->setMaterial(material);
+            renderer->setMesh(Spark::geometry->cube);
+
+
+            //actor->addComponent(Spark::geometry->getCube(material));
+
+
+
+            actor->addComponent(renderer);
             actor->addComponent(monkey);
 
         }

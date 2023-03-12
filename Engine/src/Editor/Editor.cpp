@@ -1,4 +1,5 @@
 #include "Editor.h"
+#include "Editor/Panels/VisualScriptingPanel.hpp"
 
 namespace Colours {
     namespace Theme
@@ -125,6 +126,7 @@ void Editor::init()
     this->panelManager->registerPanel<ContentPanel>("Content", true);
     this->panelManager->registerPanel<PerformancePanel>("Performance", true);
     this->panelManager->registerPanel<ToolboxPanel>("Toolbox", true);
+    this->panelManager->registerPanel<VisualScriptingPanel>("Visual Scripting", true);
 }
 
 void Editor::render() {

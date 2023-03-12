@@ -2,7 +2,7 @@
 
 void Geometry::init()
 {
-	this->cube = ModelLoader::loadMesh(Spark::graphicsContext, "./res/geom/cube.obj");
+	this->cube = ModelLoader::loadMesh(Spark::graphicsContext, "./res/cube.obj");
 }
 
 Renderer* Geometry::getCube(GPUMaterial* material)

@@ -18,7 +18,7 @@ project "Engine"
     debugdir "../Runtime"
 
     links {
-        "assimp-vc143-mtd.lib","glfw3.lib","liblz4_static.lib"
+        "assimp-vc143-mtd.lib","glfw3.lib","liblz4_static.lib","libmono-static-sgen.lib","mono-2.0-sgen.lib","MonoPosixHelper.lib"
     }
 
     files { "**.h", "**.cpp", "**.c","**.hpp" }

@@ -49,7 +49,7 @@ public:
                     const char* meshType = typeid(meshType_identifer).name();
 
                     const char* componentValue = value.second.m_Handle.type().name();
-
+                    
                     std::any finalVal = value.second;
 
                     if (componentValue == vecType) {
@@ -70,24 +70,29 @@ public:
                         }
                     }
                     else if (componentValue == meshType) {
-                        GPUMesh* tex = std::any_cast<GPUMesh*>(value.second.m_Handle);
-                        std::vector<const char*> names;
-                        for (const auto& elem : AssetManager::m_Assets) {
-                            if (elem->m_AssetType == MODEL) {
-                                names.push_back(elem->m_Name.c_str());
+                        GPUMesh* mesh = std::any_cast<GPUMesh*>(value.second.m_Handle);
+                        std::vector<const char*> models;
+                        int index = 0;
+                        for (Asset* asset : AssetManager::m_Assets) {
+                            if (asset->m_AssetType == MODEL) {
+                                if (std::any_cast<GPUMesh*>(asset->m_Handle) == mesh) {
+                                    currMesh = index;
+                                }
+                                models.push_back(asset->m_Name.c_str());
+                                index++;
                             }
-
                         }
                         int previousCurrAsset = currMesh;
-                        ImGui::Combo("##combo", &currMesh, &names[0], names.size());
+                        ImGui::Combo("#ctor2", &currMesh, &models[0], models.size());
+                        index = 0;
                         if (previousCurrAsset != currMesh) {
-                            int index = 0;
-                            for (const auto& elem : AssetManager::m_Assets) {
-                                if (elem->m_AssetType == MODEL && index == currMesh) {
-                                    std::cout << "blame on me" << std::endl;
-                                    component->components[value.first].set<GPUMesh*>(std::any_cast<GPUMesh*>(elem->m_Handle));
+                            for (Asset* asset : AssetManager::m_Assets) {
+                                if (asset->m_AssetType == MODEL) {
+                                    if (index == currMesh) {
+                                        component->components[value.first].set<GPUMesh*>(std::any_cast<GPUMesh*>(asset->m_Handle));
+                                    }
+                                    index++;
                                 }
-                                index++;
                             }
                         }
                     }

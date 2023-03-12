@@ -16,7 +16,6 @@
 #include <map>
 #include <filesystem>
 
-
 //C++ Namespaces
 namespace fs = std::filesystem;
 
@@ -40,3 +39,7 @@ namespace fs = std::filesystem;
 #include "Thirdparty/imgui/imgui.h"
 #include "Thirdparty/imgui/imgui_impl_glfw.h"
 #include "Thirdparty/imgui/imgui_impl_opengl3.h"
+
+#include <Thirdparty/mono/jit/jit.h>
+#include <Thirdparty/mono/metadata/assembly.h>
+#include <Thirdparty/mono/metadata/debug-helpers.h>

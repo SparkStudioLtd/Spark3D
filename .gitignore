@@ -5,3 +5,5 @@ Binaries/build
 *.sln
 *.user
 *.filters
+Runtime/mono/etc
+Runtime/mono/lib

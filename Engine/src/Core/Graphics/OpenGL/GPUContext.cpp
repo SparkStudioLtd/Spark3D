@@ -71,6 +71,7 @@ GPUShader* GPUContext::createShader(std::string vertex, std::string fragment)
     if (!success)
     {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+        std::cout << "Error while compiling vertex shader: " + std::string(infoLog) << std::endl;
         //Debug::error("Error while compiling vertex shader: " + std::string(infoLog));
     }
 
@@ -83,6 +84,7 @@ GPUShader* GPUContext::createShader(std::string vertex, std::string fragment)
     if (!success)
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+        std::cout << "Error while compiling fragment shader: " + std::string(infoLog) << std::endl;
         //Debug::error("Error while compiling fragment shader: " + std::string(infoLog));
     }
 
@@ -313,7 +315,7 @@ GPUTexture* GPUContext::createTexture(std::string filepath)
 void GPUContext::createAtmosphere()
 {
     this->skybox = new GPUSkybox();
-    this->skybox->cubeMesh = ModelLoader::loadMesh(this, "./res/geom/cube.obj");
+    this->skybox->cubeMesh = ModelLoader::loadMesh(this, "./res/cube.obj");
 }
 
 void GPUContext::drawQueue(GPUMesh* mesh, GPUShader* shader, Transform* transform, GPUMaterial* material)

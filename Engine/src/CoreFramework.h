@@ -10,6 +10,7 @@
 
 
 class Spark;
+class VisualNode;
 class Hook;
 class Job;
 class RenderJob;
@@ -200,13 +201,39 @@ public:
 	virtual void Render(GPUContext* context, Actor* actor);
 };
 
+class Node;
+
+class NodeOutput {
+public:
+	std::string m_Name;
+	Node* connectedNode;
+};
+
+class NodeInput {
+public:
+	std::string m_Name;
+	Node* connectedNode;
+};
+
+class Node {
+public:
+	std::vector<NodeOutput*> outputs;
+	std::vector<NodeInput*> inputs;
+	std::string m_Name;
+	std::string m_Desc;
+	void sendSignal();
+};
+
+
 class Actor {
 public:
+	std::vector<Node*> m_Nodes;
 	std::string name = "Actor";
 	Transform* transform;
 	std::vector<Component*> components;
 	void addComponent(Component* component);
 };
+
 
 struct Vertex {
 	glm::vec3 position;
@@ -523,7 +550,6 @@ class Geometry {
 public:
 	void init();
 	Renderer* getCube(GPUMaterial* material = nullptr);
-private:
 	GPUMesh* cube;
 };
 
