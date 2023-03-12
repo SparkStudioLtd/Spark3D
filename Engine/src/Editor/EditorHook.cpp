@@ -1,4 +1,4 @@
-#define SPARK_EDITOR
+#include "pch.h"
 
 #ifdef SPARK_EDITOR
 #include "Editor.h"

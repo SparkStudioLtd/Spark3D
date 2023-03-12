@@ -126,6 +126,7 @@ std::string Asset::getDescription()
 std::vector<Asset*> AssetManager::m_Assets;
 void AssetManager::loadFromFolder()
 {
+    m_Assets.clear();
     std::string path = "./Content";
     for (const auto& entry : std::filesystem::directory_iterator(path))
     {
@@ -145,4 +146,42 @@ Asset* AssetManager::getAsset(std::string m_Name)
         }
     }
     return nullptr;
+}
+
+void AssetManager::loadFromResources()
+{
+    std::string path = "./res";
+    for (const auto& entry : std::filesystem::directory_iterator(path))
+    {
+        if (!entry.is_directory()) {
+            Asset* asset = new Asset();
+            asset->m_Name = entry.path().filename().string();
+            asset->m_ToSavePath = entry.path().string();
+            asset->m_LoadedAsset.blob = asset->getBlob();
+            if (entry.path().extension() == ".fbx" || entry.path().extension() == ".obj") {
+                asset->m_AssetType = MODEL;
+                asset->m_Type = MODEL;
+            }
+            m_Assets.push_back(asset);
+        }
+    }
+}
+
+void AssetManager::reload()
+{
+    AssetManager::loadFromFolder();
+#ifdef SPARK_EDITOR
+    AssetManager::loadFromResources();
+#endif
+}
+
+void AssetManager::loadAssetHandles()
+{
+    for (Asset* asset : AssetManager::m_Assets) {
+        switch (asset->m_AssetType) {
+        case MODEL:
+            asset->m_Handle = ModelLoader::loadMeshFromAsset(Spark::graphicsContext, asset);
+            break;
+        }
+    }
 }

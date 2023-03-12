@@ -1,6 +1,10 @@
 //Disable warnings
 #pragma warning( disable : 4244 ) 
 #pragma warning( disable : 4267)
+
+//Spark globals
+#define SPARK_EDITOR
+
 //C++ Headers
 #include <iostream>
 #include <vector>

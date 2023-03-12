@@ -483,13 +483,26 @@ public:
 class ModelLoader {
 public:
 	static GPUMesh* loadMesh(GPUContext* context, std::string file);
+	static GPUMesh* loadMeshFromAsset(GPUContext* context, Asset* asset);
 };
 
 
 class Renderer : public Component {
 public:
-	GPUMesh* mesh;
-	GPUMaterial* material;
+
+	void setMesh(GPUMesh* mesh) {
+		this->components["Mesh"] = Obj(mesh);
+	}
+	void setMaterial(GPUMaterial* material) {
+		this->components["Material"] = Obj(material);
+	}
+
+	GPUMesh* getMesh() {
+		return this->components["Mesh"].get<GPUMesh*>();
+	}
+	GPUMaterial* getMaterial() {
+		return this->components["Material"].get<GPUMaterial*>();
+	}
 	virtual void BeginPlay(Actor* actor) {
 
 	}
@@ -498,10 +511,10 @@ public:
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {
 		if (context->renderingToDepthMap) {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, this->material);
+			context->drawQueue(getMesh(), Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, getMaterial());
 		}
 		else {
-			context->drawQueue(this->mesh, Spark::shaderManager->shaderByName("GBuffer"), actor->transform, this->material);
+			context->drawQueue(getMesh(), Spark::shaderManager->shaderByName("GBuffer"), actor->transform, getMaterial());
 		}
 	}
 };
@@ -517,7 +530,8 @@ private:
 
 
 enum AssetType {
-	FONT
+	FONT,
+	MODEL
 };
 
 struct LoadedAsset {
@@ -549,6 +563,9 @@ public:
 
 class AssetManager {
 public:
+	static void reload();
+	static void loadAssetHandles();
+	static void loadFromResources();
 	static std::vector<Asset*> m_Assets;
 	static void loadFromFolder();
 	static Asset* getAsset(std::string m_Name);

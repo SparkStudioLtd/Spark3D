@@ -138,12 +138,26 @@ void Editor::render() {
 
     ImGui::Begin("Dockspace", nullptr, window_flags);
     {
+        if (ImGui::BeginMainMenuBar())
+        {
+            if (ImGui::BeginMenu("File"))
+            {
+                if (ImGui::MenuItem("Reload AssetManager"))
+                {
+                    AssetManager::reload();
+                    AssetManager::loadAssetHandles();
+                }
+                ImGui::EndMenu();
+            }
+
+            ImGui::EndMainMenuBar();
+        }
         auto windowWidth = ImGui::GetWindowSize().x;
         auto textWidth = ImGui::CalcTextSize("Spark Engine a1").x;
         ImGui::SetCursorPos(ImVec2((windowWidth - textWidth) * 0.5f, 20));
         ImGui::Text("Spark Engine a1");
-
         ImGui::SetCursorPosY(64);
+
         ImGui::DockSpace(ImGui::GetID("MyDockspace"));
         for (Panel* panel : this->panelManager->m_Panels) {
             if (panel->m_Show) {
