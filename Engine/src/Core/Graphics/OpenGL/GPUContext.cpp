@@ -179,7 +179,7 @@ GPUMesh* GPUContext::createMesh(Vertex verticesStruct[], int verticesSize, int i
 }
 
 
-GPURenderPass* GPUContext::createRenderPass(bool mainRenderPass, GPUFramebuffer* framebuffer, bool disallow)
+GPURenderPass* GPUContext::createRenderPass(bool mainRenderPass, GPUFramebuffer* framebuffer, bool disallow,GPUShader* shaderToRender)
 {
     GPURenderPass* renderPass = new GPURenderPass();
     if (mainRenderPass) {
@@ -187,12 +187,14 @@ GPURenderPass* GPUContext::createRenderPass(bool mainRenderPass, GPUFramebuffer*
         renderPass->framebuffer = nullptr;
         renderPass->customViewport = glm::vec2(this->window->width, this->window->height);
         renderPass->disallowToRenderNotPriorityItems = disallow;
+        renderPass->attachedShader = shaderToRender;
     }
     else {
         renderPass->framebuffer = framebuffer;
         renderPass->useFramebuffer = true;
         renderPass->customViewport = framebuffer->type == COLORMAP ? glm::vec2(this->window->width, this->window->height) : glm::vec2(1024, 1024);
         renderPass->disallowToRenderNotPriorityItems = disallow;
+        renderPass->attachedShader = shaderToRender;
     }
 
     this->renderPasses.push_back(renderPass);

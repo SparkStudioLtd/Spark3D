@@ -9,6 +9,7 @@ void InitalizeJob::setup() {
 
 void InitalizeJob::execute(Event* event) {
 	AssetManager::reload();
+	ScriptManager::init();
 
 	Spark::graphicsContext->window = new GPUWindow();
 	Spark::graphicsContext->window->createWindow(Spark::applicationSpecification.Name, Spark::applicationSpecification.Width, Spark::applicationSpecification.Height);
@@ -36,7 +37,7 @@ void InitalizeJob::execute(Event* event) {
 #endif
 	//main render pass
 #ifdef SPARK_EDITOR
-	Spark::graphicsContext->createRenderPass(true, nullptr, true);
+	Spark::graphicsContext->createRenderPass(true, nullptr, true, Spark::shaderManager->shaderByName("GBuffer"));
 #else
 	Spark::graphicsContext->createRenderPass(true, nullptr, false);
 #endif
@@ -47,7 +48,7 @@ void InitalizeJob::execute(Event* event) {
 	Spark::graphicsContext->shadowFramebuffer = Spark::graphicsContext->createFramebuffer(DEPTHMAP);
 	Spark::graphicsContext->mainFramebuffer = Spark::graphicsContext->createFramebuffer(COLORMAP);
 #ifdef SPARK_EDITOR
-	Spark::graphicsContext->createRenderPass(false, Spark::graphicsContext->mainFramebuffer, false);
+	Spark::graphicsContext->createRenderPass(false, Spark::graphicsContext->mainFramebuffer, false,Spark::shaderManager->shaderByName("GBuffer"));
 #endif
 
 

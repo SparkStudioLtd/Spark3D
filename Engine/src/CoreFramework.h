@@ -308,6 +308,7 @@ public:
 	bool useGui = false;
 	int frameCount = 0;
 	std::map<std::string, std::any> unbaseVars;
+	GPUShader* activeShader;
 	GPUWindow* window;
 	GPUSkybox* skybox = nullptr;
 	GPUFramebuffer* shadowFramebuffer;
@@ -327,7 +328,7 @@ public:
 	GPUBuffer* createBuffer(GPUBufferType bufferType, const void* data, int size);
 	GPUMesh* createMesh(Vertex vertices[], int verticesSize, int indices[], int indicesSize);
 	GPUShader* createShader(std::string vertex, std::string fragment);
-	GPURenderPass* createRenderPass(bool mainRenderPass, GPUFramebuffer* framebuffer, bool disallowRenderToNotPriorityItems);
+	GPURenderPass* createRenderPass(bool mainRenderPass, GPUFramebuffer* framebuffer, bool disallowRenderToNotPriorityItems,GPUShader* shaderToAttach);
 	GPUFramebuffer* createFramebuffer(GPUFramebufferType type);
 	GPUTexture* createTexture(std::string filepath);
 	void createAtmosphere();
@@ -347,6 +348,7 @@ public:
 
 class GPURenderPass {
 public:
+	GPUShader* attachedShader;
 	std::map<std::string, std::any> unbaseVars;
 	bool useFramebuffer;
 	glm::vec2 customViewport = glm::vec2(0.0f, 0.0f);
@@ -537,12 +539,7 @@ public:
 		this->name = "Renderer";
 	}
 	virtual void Render(GPUContext* context, Actor* actor) {
-		if (context->renderingToDepthMap) {
-			context->drawQueue(getMesh(), Spark::shaderManager->shaderByName("ShadowPass"), actor->transform, getMaterial());
-		}
-		else {
-			context->drawQueue(getMesh(), Spark::shaderManager->shaderByName("GBuffer"), actor->transform, getMaterial());
-		}
+		context->drawQueue(getMesh(), context->activeShader, actor->transform, getMaterial());
 	}
 };
 
@@ -612,6 +609,15 @@ public:
 	void clean();
 };
 
+
+class ScriptManager {
+public:
+	static MonoDomain* domain;
+	static MonoAssembly* assembly;
+	static MonoImage* image;
+	static void init();
+	static void reloadAssembly();
+};
 
 class Hook {
 public:

@@ -43,10 +43,12 @@ void GPURenderPass::end(GPUContext* context) {
 
     glViewport(context->viewport->position.x, context->viewport->position.y, context->viewport->scale.x, context->viewport->scale.y);
 
+    context->activeShader = this->attachedShader;
     for (GPUDrawData* drawData : context->drawQueueList) {
         drawData->mesh->drawDirect(context, drawData->shader, drawData->material, drawData->transform);
         delete drawData;
     }
+    context->activeShader = nullptr;
     //finally 04.03.2023 12:59 first skybox on new base!!!!!!!!!!!
     if (this->useFramebuffer) {
         GPUFramebuffer::unbind();
