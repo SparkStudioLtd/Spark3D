@@ -227,11 +227,16 @@ public:
 
 class Actor {
 public:
+	template<typename Base, typename T>
+	inline bool instanceof(const T* ptr) {
+		return dynamic_cast<const Base*>(ptr) != nullptr;
+	}
 	std::vector<Node*> m_Nodes;
 	std::string name = "Actor";
 	Transform* transform;
 	std::vector<Component*> components;
 	void addComponent(Component* component);
+	template<typename T> T* getComponent();
 };
 
 
@@ -313,6 +318,9 @@ public:
 	GPUSkybox* skybox = nullptr;
 	GPUFramebuffer* shadowFramebuffer;
 	GPUFramebuffer* mainFramebuffer;
+	GPUFramebuffer* layerFramebuffer;
+	GPUFramebuffer* blurTechnique[2];
+	GPUMesh* layerQuad;
 	bool renderingToDepthMap = false;
 	Camera* camera = new Camera();
 	GPUViewport* viewport;
@@ -329,7 +337,7 @@ public:
 	GPUMesh* createMesh(Vertex vertices[], int verticesSize, int indices[], int indicesSize);
 	GPUShader* createShader(std::string vertex, std::string fragment);
 	GPURenderPass* createRenderPass(bool mainRenderPass, GPUFramebuffer* framebuffer, bool disallowRenderToNotPriorityItems,GPUShader* shaderToAttach);
-	GPUFramebuffer* createFramebuffer(GPUFramebufferType type);
+	GPUFramebuffer* createFramebuffer(GPUFramebufferType type,bool emissionAttachment);
 	GPUTexture* createTexture(std::string filepath);
 	void createAtmosphere();
 	void drawQueue(GPUMesh* mesh, GPUShader* shader, Transform* transform, GPUMaterial* material);
@@ -348,6 +356,7 @@ public:
 
 class GPURenderPass {
 public:
+	bool renderSkybox = true;
 	GPUShader* attachedShader;
 	std::map<std::string, std::any> unbaseVars;
 	bool useFramebuffer;
@@ -609,9 +618,29 @@ public:
 	void clean();
 };
 
+class MonoSparkScript : public Component {
+public:
+	MonoObject* m_Instance;
+	std::string m_MonoName;
+	virtual void Update(Actor* actor) {
+		this->name = this->m_MonoName;
+		MonoClass* instanceClass = mono_object_get_class(m_Instance);
+		MonoMethod* method = mono_class_get_method_from_name(instanceClass, "Update", 0);
+		MonoObject* exception = nullptr;
+		mono_runtime_invoke(method, m_Instance, nullptr, &exception);
+	}
+	virtual void BeginPlay(Actor* actor) {
+
+	}
+	virtual void Render(GPUContext* context) {
+
+	}
+};
+
 
 class ScriptManager {
 public:
+	static std::map<std::string,MonoSparkScript*> m_Scripts;
 	static MonoDomain* domain;
 	static MonoAssembly* assembly;
 	static MonoImage* image;

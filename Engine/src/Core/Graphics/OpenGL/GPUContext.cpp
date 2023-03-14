@@ -12,6 +12,22 @@ void GPUContext::createAdapterAndContext() {
     }
 
     glViewport(0, 0, this->window->width, this->window->height);
+
+    Vertex vertices[] = {
+        {{-1.0f,  1.0f,0.0f},{0.0f, 1.0f},{0,0,0}},
+        {{-1.0f, -1.0f,0.0f},{0.0f, 0.0f},{0,0,0}},
+        {{1.0f, -1.0f,0.0f},{1.0f, 0.0f},{0,0,0}},
+
+        {{-1.0f,  1.0f,0.0f},{0.0f, 1.0f},{0,0,0}},
+        {{ 1.0f, -1.0f,0.0f},{1.0f, 0.0f},{0,0,0}},
+        {{1.0f,  1.0f,0.0f},{1.0f, 1.0f},{0,0,0}},
+    };
+
+    int indices[] = {
+        0,1,2,3,4,5
+    };
+
+    this->layerQuad = this->createMesh(vertices, sizeof(vertices), indices, sizeof(indices));
 }
 
 
@@ -202,7 +218,7 @@ GPURenderPass* GPUContext::createRenderPass(bool mainRenderPass, GPUFramebuffer*
 }
 
 //Add colormap framebuffer
-GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
+GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type,bool emissionAttachment)
 {
     GPUFramebuffer* framebuffer = new GPUFramebuffer();
 
@@ -245,18 +261,46 @@ GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
         float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
         glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        unsigned int map2;
+        if (emissionAttachment) {
+            glGenTextures(1, &map2);
+            glBindTexture(GL_TEXTURE_2D, map2);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+            float borderColor2[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+            glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor2);
+            glBindTexture(GL_TEXTURE_2D, 0);
+            framebuffer->unbaseVars["emissionColorBuffer"] = (int)map2;
+        }
+
+
 
         glBindFramebuffer(GL_FRAMEBUFFER, mapFBO);
 
         switch (type) {
         case COLORMAP:
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, map, 0);
+            if (emissionAttachment) {
+                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, map2, 0);
+            }
             break;
         case DEPTHMAP:
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, map, 0);
             glDrawBuffer(GL_NONE);
             glReadBuffer(GL_NONE);
             break;
+        }
+
+        if (emissionAttachment) {
+            unsigned int attachments[2] = { GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1 };
+            glDrawBuffers(2, attachments);
         }
 
         framebuffer->unbaseVars["textureColorBuffer"] = (int)map;
@@ -266,7 +310,7 @@ GPUFramebuffer* GPUContext::createFramebuffer(GPUFramebufferType type)
         glGenRenderbuffers(1, &rbo);
         glBindRenderbuffer(GL_RENDERBUFFER, rbo);
         //without multisampling:  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
-        glRenderbufferStorageMultisample(GL_RENDERBUFFER, 8,GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->window->width, this->window->height);
 
 
         glBindRenderbuffer(GL_RENDERBUFFER, 0);

@@ -1,12 +1,67 @@
 #include "CoreFramework.h"
 
+unsigned int quadVAO = 0;
+unsigned int quadVBO;
+void renderQuad()
+{
+    if (quadVAO == 0)
+    {
+        float quadVertices[] = {
+            // positions        // texture Coords
+            -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+             1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+        };
+        // setup plane VAO
+        glGenVertexArrays(1, &quadVAO);
+        glGenBuffers(1, &quadVBO);
+        glBindVertexArray(quadVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    }
+    glBindVertexArray(quadVAO);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glBindVertexArray(0);
+}
+
 void GPURenderPass::begin(GPUContext* context) {
+
+    context->activeShader = this->attachedShader;
     if (this->useFramebuffer)
     {
         this->framebuffer->bind();
         if (this->framebuffer->type == DEPTHMAP) {
             context->renderingToDepthMap = true;
         }
+    }
+    else {
+        //BLUR!!!!!!12.03.2023
+        //two pass blur13.03.2023
+        //im getting depression14.03.2023
+        
+        GPUFramebuffer* hBuffer = Spark::graphicsContext->blurTechnique[0];
+        GPUFramebuffer* vBuffer = Spark::graphicsContext->blurTechnique[1];
+
+        Spark::shaderManager->shaderByName("Blur")->bind();
+
+        hBuffer->bind();
+        Spark::shaderManager->shaderByName("Blur")->shaderInputDataInt("horizontal", true);
+        glBindTexture(GL_TEXTURE_2D, std::any_cast<int>(context->mainFramebuffer->unbaseVars["emissionColorBuffer"]));
+        renderQuad();
+        GPUFramebuffer::unbind();
+
+        vBuffer->bind();
+        Spark::shaderManager->shaderByName("Blur")->shaderInputDataInt("horizontal", false);
+        glBindTexture(GL_TEXTURE_2D, std::any_cast<int>(vBuffer->unbaseVars["textureColorBuffer"]));
+        renderQuad();
+        GPUFramebuffer::unbind();
+
+        GPUShader::unbind();
     }
     glViewport(0, 0, this->customViewport.x, this->customViewport.y);
     glClearColor(context->clearColor.red, context->clearColor.green, context->clearColor.blue, context->clearColor.alpha);
@@ -24,7 +79,9 @@ void GPURenderPass::begin(GPUContext* context) {
     if (context->skybox != nullptr && !this->disallowToRenderNotPriorityItems) {
         //if (this->framebuffer != nullptr) {
             //if (this->framebuffer->type != DEPTHMAP) {
-        context->skybox->update(context);
+        if (this->renderSkybox) {
+            context->skybox->update(context);
+        }
         //}
    // }
     //else {
@@ -34,21 +91,38 @@ void GPURenderPass::begin(GPUContext* context) {
     //}
 }
 
+
 void GPURenderPass::end(GPUContext* context) {
     GLFWwindow* window = context->window->unbaseVars["windowHandle"].get<GLFWwindow*>();
 
+
     glViewport(0, 0, context->window->width, context->window->height);
-    if (context->useGui)
+    if (context->useGui && this->renderSkybox)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     glViewport(context->viewport->position.x, context->viewport->position.y, context->viewport->scale.x, context->viewport->scale.y);
 
-    context->activeShader = this->attachedShader;
     for (GPUDrawData* drawData : context->drawQueueList) {
-        drawData->mesh->drawDirect(context, drawData->shader, drawData->material, drawData->transform);
+        drawData->mesh->drawDirect(context,drawData->shader, drawData->material, drawData->transform);
         delete drawData;
     }
-    context->activeShader = nullptr;
+
+    //Draw bloom/postprocessing
+    if (context->activeShader == Spark::shaderManager->shaderByName("PostProcess")) {
+        GPUMaterial* material = new GPUMaterial();
+        GPUTexture* computeFramebuffer = new GPUTexture();
+        computeFramebuffer->unbaseVars["textureID"] = std::any_cast<int>(Spark::graphicsContext->blurTechnique[1]->unbaseVars["textureColorBuffer"]);
+        material->texture = computeFramebuffer;
+        material->useLighting = false;
+        material->albedoColor = glm::vec3(0, 0, 0);
+        Transform* transform = new Transform();
+        transform->setTransform(glm::vec3(0), glm::vec3(0), glm::vec3(0));
+        context->layerQuad->drawDirect(context, Spark::shaderManager->shaderByName("PostProcess"), material, transform);
+        delete material;
+        delete computeFramebuffer;
+        delete transform;
+    }
+
     //finally 04.03.2023 12:59 first skybox on new base!!!!!!!!!!!
     if (this->useFramebuffer) {
         GPUFramebuffer::unbind();

@@ -1,5 +1,6 @@
 #version 430 core
-out vec4 FragColor;
+layout (location = 0) out vec4 FragColor;
+layout (location = 1) out vec4 EmissionColor;
 
 in vec2 texCoord;
 in vec3 normal;
@@ -86,5 +87,7 @@ void main()
     if(useLighting)
         result = lightCalulcations(result);
 
+    //discard;
     FragColor = vec4(result,alpha);
+    EmissionColor = vec4(result,alpha);
 } 

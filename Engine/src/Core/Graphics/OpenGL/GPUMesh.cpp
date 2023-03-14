@@ -34,9 +34,9 @@ void GPUMesh::drawDirect(GPUContext* context, GPUShader* shader, GPUMaterial* ma
         glm::vec3(0.0f, 1.0f, 0.0f));
     shader->shaderInputDataMat4("lightSpaceMatrix", lightProjection * lightView);
 
-    if (context->renderingToDepthMap) {
+    if (shader == Spark::shaderManager->shaderByName("PostProcess")) {
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, std::any_cast<int>(context->shadowFramebuffer->unbaseVars["textureColorBuffer"]));
+        glBindTexture(GL_TEXTURE_2D, std::any_cast<int>(context->mainFramebuffer->unbaseVars["textureColorBuffer"]));
         shader->shaderInputDataInt("depthMap", 0);
     }
     else {

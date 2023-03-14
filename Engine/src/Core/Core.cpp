@@ -29,6 +29,16 @@ void Spark::CreateCore() {
 	JobSystem::AddJob(new RenderJob());
 }
 
+template<typename T>
+T* Actor::getComponent()
+{
+	for (Component* component : this->components) {
+		if (instanceof<T*>(component)) {
+			return component;
+		}
+	}
+}
+
 void Spark::RegisterApplicationSpecification(ApplicationSpecification app) {
 	Spark::applicationSpecification = app;
 }

@@ -2,7 +2,7 @@
 
 glm::mat4 Camera::getProjectionMatrix(GPUContext* context)
 {
-    return glm::perspective(glm::radians(45.0f), (float)context->window->width / (float)context->window->height, 0.1f, 1000.0f);
+    return glm::perspective(glm::radians(45.0f), (float)context->window->width / (float)context->window->height, 0.1f, 10000.0f);
 }
 
 

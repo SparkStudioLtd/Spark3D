@@ -167,7 +167,7 @@ void Editor::render() {
                 panel->editor = Obj(this);
                 panel->selectedActor = this->selectedActor;
                 if (panel->m_Name == "Viewport") {
-                    if (ImGui::ImageButton((void*)std::any_cast<int>(Spark::graphicsContext->renderPasses[1]->framebuffer->unbaseVars["textureColorBuffer"]), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0))) {
+                    if (ImGui::ImageButton((void*)std::any_cast<int>(Spark::graphicsContext->layerFramebuffer->unbaseVars["textureColorBuffer"]), ImGui::GetWindowSize(), ImVec2(0, 1), ImVec2(1, 0))) {
                         this->viewportCamera->mouseHooked = true;
                     }
                 }
